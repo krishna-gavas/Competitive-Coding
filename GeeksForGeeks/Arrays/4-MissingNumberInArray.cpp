@@ -9,7 +9,6 @@ int main() {
 	    long int N,sum=0,num,total;
 	    cin>>N;
 		total = (N*(N+1))/2;
-		cout<<total<<endl;
 	    long int arr[N];
 	    for(long int i=0;i<N-1;i++){
 	        cin>>arr[i];
