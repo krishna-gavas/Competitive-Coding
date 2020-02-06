@@ -1,3 +1,4 @@
+// Subarray with given sum (Trivial)
 #include <iostream>
 using namespace std;
 

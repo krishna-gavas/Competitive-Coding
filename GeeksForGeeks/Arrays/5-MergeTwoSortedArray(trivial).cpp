@@ -1,4 +1,4 @@
-//Merge Two sorted array without extra space
+//Merge Two sorted array without extra space(Trivial approach)
 #include <iostream>
 using namespace std;
 

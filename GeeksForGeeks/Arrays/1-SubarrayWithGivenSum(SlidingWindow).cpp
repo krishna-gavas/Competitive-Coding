@@ -1,4 +1,4 @@
-// Subarray with given sum using Sliding window technique
+// Subarray with given sum(Sliding window technique)
 #include <iostream>
 using namespace std;
 
