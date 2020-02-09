@@ -1,35 +1,34 @@
-// Kth smallest element
+// Kth smallest element(not submitted)
 
 #include <iostream>
 #include <algorithm>
-#include <cstdlib>
-#include <ctime>
 using namespace std;
 
-long int Partition(long int A[],long int l,long int r,long int p){
-	while(l<=r){
-		while(A[l] < A[p]) 
-			l = l + 1;
-		while(A[r] > A[p]) 	
-			r = r - 1;
-		swap(A[l],A[r]);
-	}
-	swap(A[p],A[r]);
-	return r;
+int R_Partition(long int A[],long int l,long int r){
+    long int ran = l + rand() % (r-l+1);
+    swap(A[ran],A[r]);
+
+    long int x=A[r];
+    long int i=l-1;
+    for(int j=l;j<=r-1;j++){
+        if(A[j]<=x){
+            i=i+1;
+            swap(A[i],A[j]);
+        }
+    }
+    swap(A[i+1],A[r]);
+    return i+1;
 }
 
 long int QuickSelect(long int A[],long int l,long int r,long int k){
-	int x,p;
-	p = rand() % r;
-	p = p + 1;
-	cout<<"pivot "<<p<<endl;
-	x = Partition(A,l,r,p);
-	if(x == k)
-		return A[x];
-	else if(x > k)
-		return QuickSelect(A,1,x-1,k);
+	int p;
+	p = R_Partition(A,l,r);
+	if(p == k)
+		return A[p];
+	else if(p > k)
+		return QuickSelect(A,1,p-1,k);
 	else
-		return QuickSelect(A,x+1,r,k-x);
+		return QuickSelect(A,p+1,r,k);
 }
 
 int main() {
@@ -41,11 +40,12 @@ int main() {
 	    cin>>N;
 	    long int arr[N];
 
-	    for(long int i=1;i<=N;i++)
+	    for(long int i=0;i<N;i++)
 	        cin>>arr[i];
 
 		cin>>K;
-		out = QuickSelect(arr,1,N,K);
+
+		out = QuickSelect(arr,1,N-1,K-1);
 
 		cout<<out<<endl;
 	}

@@ -2,14 +2,28 @@
 #include <algorithm>
 using namespace std;
 
+// Using last element as pivot
+// int Partition(int A[], int l, int r){  
+//     int pivot = A[r];   
+//     int i = (l - 1);  
+  
+//     for (int j = l; j <= r - 1; j++){    
+//         if (A[j] < pivot)  {  
+//             i++;  
+//             swap(A[i],A[j]);  
+//         }  
+//     }  
+//     swap(A[i + 1], A[r]);  
+//     return (i + 1);  
+// }
+
+//Using first element as pivot
 int Partition(int A[],int l,int r){
     int pivot =A[l];   
     int i = (r + 1);  
   
-    for (int j = r; j > l; j--)  
-    {   
-        if (A[j] > pivot)  
-        {  
+    for (int j = r; j > l; j--){   
+        if (A[j] > pivot){  
             i--; 
             swap(A[i], A[j]);  
         }  
