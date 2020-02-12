@@ -1,5 +1,6 @@
 // Permutations of a given string
 // recursively swap elements 
+
 #include <iostream>
 #include <string>
 #include <algorithm>
