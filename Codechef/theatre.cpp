@@ -2,71 +2,73 @@
 
 #include <iostream>
 #include <algorithm>
-#include <map>
 #include <vector>
 using namespace std;
-
-multimap<int, string> invert(map<string, int> & mymap){
-	multimap<int, string> multiMap;
-
-	map<string, int> :: iterator it;
-	for (it=mymap.begin(); it!=mymap.end(); it++){
-		multiMap.insert(make_pair(it->second, it->first));
-	}
-	return multiMap;
-}
 
 int main() {
 	int T,totalsum=0;
 	cin>>T;
 	while(T--){
-	    int N,sum=0,cash=100;
+	    int N,max=0,max1=-99999999,max2=0,cash=100;
         cin>>N;
         char m[N];
         int t[N];
-        map<string,int> mymap;
-        multimap<int, string> mp;
-        multimap<int,string> :: reverse_iterator it;
-        vector<string> movie;
-        vector<string> time;
-        vector<int> price;
-
+        int mat[4][4] = {0};
+        int a[4] = {0,1,2,3},b[4],c[13];
+        c[12] = 0;c[3] = 1;c[6] = 2;c[9] = 3;
         
         for(int i=0;i<N;i++){
             cin>>m[i]>>t[i];
-            string str1(1,m[i]);
-            string str2 = to_string(t[i]);
-            string key;
-            key.append(str1);
-            key.append(str2);
+            switch (m[i])
+            {
+            case 'A':   (mat[0][c[t[i]]])++;
+                        break;
 
-            if(mymap.count(key) == 1)
-                mymap[key] = mymap[key] + 1;
-            else
-                mymap.insert(pair<string, int>(key, 1));
-        }
-        mp = invert(mymap);
+            case 'B':   (mat[1][c[t[i]]])++;
+                        break;
 
-        for (it=mp.rbegin(); it!=mp.rend(); it++){
-            string str,mov,tim;
-            str = it->second;
-            int len = str.length();
-            mov = str.substr(0,1);
-            tim = str.substr(1,len-1);
-            if ((find(movie.begin(), movie.end(), mov) == movie.end()) && (find(time.begin(), time.end(), tim) == time.end())){
-                movie.push_back(mov);
-                time.push_back(tim);
-                price.push_back(it->first);
+            case 'C':   (mat[2][c[t[i]]])++;
+                        break;
+
+            case 'D':   (mat[3][c[t[i]]])++;
+                        break;
+            
+            default:    break;
             }
         }
 
-        for(int i=0;i<price.size();i++){
-            sum = sum + (cash * price[i]);
-            cash = cash - 25;
-        }
-        sum = sum - (4 - price.size())*100;
-        totalsum = totalsum + sum;
-        cout<<sum<<endl;
+        do { 
+            int sum = 0,price = 100;
+            b[0] = mat[0][a[0]];
+            b[1] = mat[1][a[1]];
+            b[2] = mat[2][a[2]];
+            b[3] = mat[3][a[3]];
+            sort(b, b + 4);
+            for(int i=3;i>=0;i--){
+                if(b[i] != 0)
+                    sum = sum + (b[i]*price);
+                else
+                    sum = sum - 100;
+                price = price - 25;
+            }
+            if(sum <= 0){
+                if(sum >= max1)
+                    max1 = sum;
+
+            }else{
+                if(sum > max2)
+                    max2 = sum;
+            }
+
+        } while(next_permutation(a, a + 4));
+
+        if(max2 > 0)
+            max = max2;
+        else
+            max = max1;           
+
+        cout<<max<<endl;
+        totalsum = totalsum + max;
 	}
     cout<<totalsum<<endl;
 	return 0;
