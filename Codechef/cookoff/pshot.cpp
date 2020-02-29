@@ -12,9 +12,8 @@ int main() {
         s = 2*N;
         for(int i=0;i<2*N;i++){
             cin>>S[i];
-
             if(i%2 == 0){
-                if((count1  -count2) > rem || (count2  -count1) > rem){
+                if((count1  - count2) > rem || (count2  -count1) > rem){
                     s = i;
                     break;
                 }
