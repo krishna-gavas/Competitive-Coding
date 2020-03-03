@@ -1,4 +1,4 @@
-// Anagram(not submitted)
+// Anagram
 #include <iostream>
 #include <string.h>
 #include <algorithm>
