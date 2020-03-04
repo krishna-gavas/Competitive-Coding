@@ -1,4 +1,4 @@
-// Finding middle element in a linked list
+// Reverse a Linked List in groups of given size.
 
 #include <iostream>
 #include <string>
@@ -49,19 +49,53 @@ struct Node* reverseList(struct Node* head){
     return head;
 }
 
+struct Node* reverseGroup(struct Node* head,int k){
+    struct Node *cur, *prev, *next, *start1, *start2;
+    int flag = 0,m = 0;
+    cur = head;
+    prev = NULL;
+    start1 = cur;
+    while(cur != NULL){
+
+        for(int i=0;i<k;i++){
+            if(cur == NULL)
+                break;
+            
+            next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+        if(m != 0){
+            start1->next = prev;
+            start1 = start2;
+        }
+        start2 = cur;
+        m++;
+        if(flag == 0){
+            head = prev;
+            flag = 1;
+        }
+        prev = NULL;
+    }
+    
+    return head;
+}
+
 int main() {
 	int T;
 	cin>>T;
 	while(T--){
 	    struct Node *head = NULL;
-        int N,l;
+        int N,l,K;
 
         cin>>N;
         for(int i=0;i<N;i++){
             cin>>l;
             Insert(&head,l);
         }
-        head = reverseList(head);
+        cin>>K;
+        head = reverseGroup(head, K);
         Print(&head);
 
 	}
