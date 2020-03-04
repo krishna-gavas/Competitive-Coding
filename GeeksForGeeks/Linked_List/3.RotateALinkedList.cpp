@@ -1,4 +1,4 @@
-// Finding middle element in a linked list
+// Rotate a Linked List
 
 #include <iostream>
 #include <string>
@@ -24,48 +24,55 @@ void Print(struct Node** head){
 }
 
 void Insert(struct Node** head, int newdata){
-    struct Node* newNode = new Node(newdata);    
+    struct Node *newNode = new Node(newdata);    
     if(*head == NULL)
         *head = newNode;
     else{
-        struct Node* temp = *head;
+        struct Node *temp = *head;
         while(temp->next != NULL)
             temp = temp->next;
         temp->next = newNode;
     }
 }
 
-int getMiddle(struct Node** head){
-    struct Node* temp = *head;
-    struct Node* mid = *head;
-    int count=0;
-    while(temp != NULL){
-        temp = temp->next;
+struct Node* rotate(struct Node* head,int k){
+    struct Node *cur = head;
+    struct Node *tail = head;
+    int count = 1;
+    while(tail->next != NULL){
+        tail = tail->next;
         count++;
     }
-    count = (count/2) + 1;
-    while(count > 1){
-        mid = mid->next;
-        count--;
-    }
-    return mid->data;
+    if(k > count)
+        k = k % count;
+    if(k == 0)
+        return head;
+    for(int i=1;i<k;i++)
+        cur = cur->next;
+
+    tail->next = head;
+    head = cur->next;
+    cur->next = NULL;
+    
+    return head;
 }
 
 int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    struct Node* head = NULL;
-        int N,l,out;
+	    struct Node *head = NULL;
+        int N,l,K;
 
         cin>>N;
         for(int i=0;i<N;i++){
             cin>>l;
             Insert(&head,l);
         }
-        // Print(&head);
-        out = getMiddle(&head);
-        cout<<out<<endl;
+        cin>>K;
+        head = rotate(head, K);
+        Print(&head);
+
 	}
 	return 0;
 
