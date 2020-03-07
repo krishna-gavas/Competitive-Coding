@@ -35,20 +35,6 @@ void Insert(struct Node** head, int newdata){
     }
 }
 
-struct Node* reverseList(struct Node* head){
-    struct Node *cur, *prev, *next;
-    cur = head;
-    prev = NULL;
-    while(cur != NULL){
-        next = cur->next;
-        cur->next = prev;
-        prev = cur;
-        cur = next;
-    }
-    head = prev;
-    return head;
-}
-
 struct Node* reverseGroup(struct Node* head,int k){
     struct Node *cur, *prev, *next, *start1, *start2;
     int flag = 0,m = 0;
