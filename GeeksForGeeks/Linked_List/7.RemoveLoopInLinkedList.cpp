@@ -38,8 +38,8 @@ void Insert(struct Node** head, int newdata, struct Node** tail){
     }
 }
 
-void removeTheLoop(struct Node **head){
-    struct Node *temp1 = *head, *temp2 = *head,*temp3 = *head;
+void removeTheLoop(struct Node *head){
+    struct Node *temp1 = head, *temp2 = head,*temp3 = head;
     int count = 0;
     while(temp1 != NULL){
         if(temp1->data < 0){
@@ -51,7 +51,7 @@ void removeTheLoop(struct Node **head){
         temp2->next = temp1;
         count++;
     }
-    *head = temp3;
+    head = temp3;
     // struct Node *temp3 = *head;
     // for(int i=0;i<count;i++){
     //     cout<<temp3->data<<" ";
@@ -79,7 +79,7 @@ int main() {
                 temp = temp->next;
             tail->next = temp;
         }
-        removeTheLoop(&head);
+        // removeTheLoop(head);
         
         Print(head);
 	}
