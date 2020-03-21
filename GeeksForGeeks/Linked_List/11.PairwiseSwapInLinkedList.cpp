@@ -1,7 +1,6 @@
 // Pairwise swap elements of a linked list
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node{

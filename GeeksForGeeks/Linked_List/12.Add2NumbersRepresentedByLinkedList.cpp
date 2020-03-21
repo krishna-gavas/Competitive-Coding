@@ -1,7 +1,6 @@
 // Add two numbers represented by linked lists
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node{

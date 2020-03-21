@@ -1,7 +1,6 @@
 // Check if Linked List is Palindrome
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node{

@@ -1,7 +1,6 @@
 // Merge two sorted linked lists
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node{

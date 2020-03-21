@@ -1,7 +1,6 @@
 // Flattening a Linked List(Not submitted)
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct Node{
