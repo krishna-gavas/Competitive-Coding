@@ -14,7 +14,6 @@ struct Node{
     }
 };
 
-
 void Print(struct Node* head){
     struct Node* temp = head;
     while(temp != NULL){
@@ -76,5 +75,4 @@ int main() {
         Print(head);
 	}
 	return 0;
-
 }
