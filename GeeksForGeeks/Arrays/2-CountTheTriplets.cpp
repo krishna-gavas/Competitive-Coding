@@ -1,7 +1,7 @@
+// Count the Triplets (using index array approach)
 #include <iostream>
 using namespace std;
 
-// Count the Triplets (using index array approach)
 int main() {
 	int T;
 	cin>>T;
