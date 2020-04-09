@@ -1,7 +1,7 @@
 // Sell All the Cars 
 
 #include <iostream>
-#include <vector>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -11,20 +11,18 @@ int main() {
 	    int N,max;
 	    long int profit = 0;
         cin>>N;
-        int P[N];
-        vector<int> vec;
-        vector<int>::iterator pos;
-        for(int i=0;i<N;i++){
+        long int P[N];
+        for(int i=0;i<N;i++)
             cin>>P[i];
-            vec.push_back(P[i]);
-        }
+
+        sort(P, P+N, greater<int>());
+
         for(int i=0;i<N;i++){
-            max = *max_element(vec.begin(), vec.end());
-            pos = find(vec.begin(), vec.end(), max);
-            vec.erase(pos);
-            if(max-i > 0)
+            max = P[i];
+            if(max - i > 0)
                 profit = profit + (max - i);
         }
+        
         cout<<profit%1000000007<<"\n";
 	}
 	return 0;

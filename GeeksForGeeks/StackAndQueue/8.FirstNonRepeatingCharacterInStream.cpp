@@ -1,10 +1,32 @@
 // First non-repeating character in a stream
 
 #include <iostream>
-#include <queue>
-#include <vector>
-#include <algorithm>
 using namespace std;
+
+struct Node{
+    char data;
+    Node *next,*prev;
+    Node(int data)
+    {
+        this->data=data;
+        next=prev=NULL;
+    }
+};
+
+Node* Insert(struct Node** head, int newdata){
+    struct Node* newNode = new Node(newdata);    
+    if(*head == NULL)
+        *head = newNode;
+    else{
+        struct Node* temp = *head;
+        while(temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+        newNode->prev = temp;
+        newNode->next = NULL;
+    }
+    return newNode;
+}
 
 int main() {
 	int T;
@@ -13,32 +35,46 @@ int main() {
 	    int n;
 	    cin>>n;
 	    char in[n], out[n];
-        vector<char> v1;
-        vector<char> v2;
+        Node* inDLL[256] = {NULL};
+        bool repeated[256] = {false};
+        Node *head = NULL;
         for(int i=0;i<n;i++){
             cin>>in[i];
-            if(find(v1.begin(), v1.end(), in[i]) != v1.end()){
-                if(!v1.empty()){
-                    out[i] = q.front();
-                    q.pop();
-                }
-                else 
-                    out[i] = '0';
+            if(repeated[in[i]]){
+
             }
             else{
-                v1.push_back(in[i]);
-                while(!v1.empty()){
-                    v2.push_back(v1.pop_back());
+                if(inDLL[in[i]] == NULL){
+                    Node *newNode = Insert(&head, in[i]);
+                    inDLL[in[i]] = newNode;
                 }
-                out[i] = q.front();
+                else{
+                    Node *tempNode = inDLL[in[i]];
+                    if(head == inDLL[in[i]]){
+                        if(head->next == NULL)
+                            head = NULL;
+                        else{
+                            head = head->next;
+                            head->prev = NULL;
+                        }
+                    }
+                    else if(tempNode->next == NULL){
+                        tempNode->prev->next = NULL;
+                    }
+                    else{
+                        Node *prevNode = tempNode->prev, *nextNode = tempNode->next;
+                        prevNode->next = tempNode->next;
+                        nextNode->prev = tempNode->prev;
+                    }
+                    inDLL[in[i]] = NULL;
+                    repeated[in[i]] = true;
+                }
             }
-        }
-
-        for(int i=0;i<n;i++)
-            if(out[i] == '0')
-                cout<<-1<<" ";
+            if(head != NULL)
+                cout<<head->data<<" ";
             else 
-                cout<<out[i]<<" ";
+                cout<<-1<<" ";
+        }
         cout<<"\n";
 	}
 	return 0;
