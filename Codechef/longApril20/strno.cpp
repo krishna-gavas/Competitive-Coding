@@ -21,43 +21,34 @@ bool isPrime(int n)
     return true;
 }
 
+int strangeNum(int X, int K){
+    if(K == 1)
+        return 1;
+    int flag = 0,res;
+    for(int i=2;i<=sqrt(X);i++){
+        if(X % i == 0){
+            X = X / i;
+            flag = 1;
+            if(isPrime(i))
+                K--;
+        }
+    }
+    if(flag == 1)
+        res = strangeNum(X, K);
+    else 
+        return 0;
+    return res;
+}
+
 int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    int X,K,div,pri,flag=0;
+	    int X,K,out;
         cin>>X>>K;
-        for(int j=X;j<X*X;j++){
-            div = 0; pri = 0;
-            if(isPrime(j))
-                continue;
-            for (int i = 1; i <= sqrt(j); i++) { 
-                if (j % i == 0) { 
-                    if (j / i == i) 
-                        div++;        
-                    else  
-                        div = div + 2; 
-                } 
-            }
-            if(X == div){
-                for (int i = 1; i <= sqrt(j); i++){
-                    if (j % i == 0){
-                        if(isPrime(i) && isPrime(j/i))
-                            pri = pri + 2;
-                        else if(isPrime(i))
-                            pri++;
-                    }
-                }
-                if(pri == K){
-                    flag = 1;
-                    break;
-                }
-            }
-        }
-        if(flag == 1)
-            cout<<"1\n";
-        else 
-            cout<<"0\n";
+        out = strangeNum(X,K);
+        cout<<out<<"\n";
+
 	}
 	return 0;
 }
