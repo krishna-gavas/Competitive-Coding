@@ -65,16 +65,18 @@ Node* buildTree(string str){
 
 void leftView(Node *root)
 {
-   Node* tempNode = root;
-   while(tempNode != NULL){
-       if((tempNode->left != NULL && tempNode->left->data == 'N') || (tempNode->left == NULL)){
-            cout<<tempNode->data<<" ";
-            tempNode = tempNode->right;
-            continue;
-       }
-       cout<<tempNode->data<<" ";
-       tempNode = tempNode->left;
-   }
+    if(root == NULL)
+        return;
+    Node* tempNode = root;
+    while(tempNode != NULL){
+        if((tempNode->left != NULL && tempNode->left->data == 'N') || (tempNode->left == NULL)){
+                cout<<tempNode->data<<" ";
+                tempNode = tempNode->right;
+                continue;
+        }
+        cout<<tempNode->data<<" ";
+        tempNode = tempNode->left;
+    }
 }
 
 void inOrder(Node *root){
@@ -93,8 +95,8 @@ int main() {
 	    string s;
         getline(cin,s);
         Node* root = buildTree(s);
-        inOrder(root);
-        cout<<"\n";
+        // inOrder(root);
+        // cout<<"\n";
         leftView(root);
         cout<<"\n";
 	}
