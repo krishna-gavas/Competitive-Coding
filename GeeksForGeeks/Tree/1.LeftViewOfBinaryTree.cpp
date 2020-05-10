@@ -1,5 +1,21 @@
 // Left View of Binary Tree
 
+// Accept a string s and call buildTree(s) function.
+// In buildTree() copy the string elements into a vector.
+//     build a queue and push root into it.
+//     Access all the vector elements and also check if the queue is not empty:
+//     initialize i=1(first element access)
+//     For every access make currNode = queue.front() and currVal = ip[i]
+//     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
+//     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
+//     finally return root. 
+// call leftView(root) function.
+// In leftView() create a queue of pair<Node *, int> for each node and its level.
+//     push root with level 0 into queue and initialize lev = 0
+//     while queue is not empty:
+//     make t = queue.front() and check if t.second = lev(i.e print first node of every level) and increment lev
+//     check if(t.first->left != NULL) and push t.first->left with level t.second+1, check similarly for t.first->right.
+
 #include <iostream>
 #include <string>
 #include <string.h>
@@ -67,15 +83,31 @@ void leftView(Node *root)
 {
     if(root == NULL)
         return;
-    Node* tempNode = root;
-    while(tempNode != NULL){
-        if((tempNode->left != NULL && tempNode->left->data == 'N') || (tempNode->left == NULL)){
-                cout<<tempNode->data<<" ";
-                tempNode = tempNode->right;
-                continue;
+    // Node* tempNode = root;
+    // while(tempNode != NULL){
+    //     if((tempNode->left != NULL && tempNode->left->data == 'N') || (tempNode->left == NULL)){
+    //             cout<<tempNode->data<<" ";
+    //             tempNode = tempNode->right;
+    //             continue;
+    //     }
+    //     cout<<tempNode->data<<" ";
+    //     tempNode = tempNode->left;
+    // }
+
+    queue<pair<Node *, int>> q;
+    q.push(make_pair(root,0));
+    int lev = 0;
+    while(q.empty() == false){
+        pair<Node *, int> t = q.front();
+        if(t.second == lev){
+            cout<<t.first->data<<" ";
+            lev++;
         }
-        cout<<tempNode->data<<" ";
-        tempNode = tempNode->left;
+        if(t.first->left != NULL)
+            q.push(make_pair(t.first->left, t.second+1));
+        if(t.first->right != NULL)
+            q.push(make_pair(t.first->right, t.second+1));
+        q.pop();
     }
 }
 
