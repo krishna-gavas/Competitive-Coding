@@ -114,16 +114,6 @@ Node* buildTree(string str)
    return root;
 }
 
-void inorder(Node *root, vector<int> &v)
-{
-    if(root==NULL)
-        return;
-
-    inorder(root->left, v);
-    v.push_back(root->data);
-    inorder(root->right, v);
-}
-
 int main() {
  
    int t;
