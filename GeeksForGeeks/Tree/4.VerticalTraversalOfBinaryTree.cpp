@@ -113,25 +113,25 @@ void verticalOrder(Node *root){
     int hd = 0,height = 0;
     mp.insert(make_pair(hd, make_pair(root->data,0)));
 
-    queue< pair<Node *, pair<int, int> > > queueStack; 
-    queueStack.push(make_pair(root, make_pair(height, hd)));
+    queue< pair<Node *, pair<int, int> > > nodeQueue; 
+    nodeQueue.push(make_pair(root, make_pair(height, hd)));
 
-    while (queueStack.empty() == false) 
+    while (nodeQueue.empty() == false) 
     { 
         // Pop the top item from queue 
-        struct Node *node = queueStack.front().first; 
-        height = queueStack.front().second.first;
-        hd = queueStack.front().second.second;
+        struct Node *node = nodeQueue.front().first; 
+        height = nodeQueue.front().second.first;
+        hd = nodeQueue.front().second.second;
         // cout<<node->data<<endl;
-        queueStack.pop(); 
+        nodeQueue.pop(); 
   
         // Enqueue left child and right child
         if (node->left){
-            queueStack.push(make_pair(node->left, make_pair(height+1, hd-1)));
+            nodeQueue.push(make_pair(node->left, make_pair(height+1, hd-1)));
             mp.insert(make_pair(hd-1, make_pair(node->left->data,height+1)));
         }
         if (node->right){
-            queueStack.push(make_pair(node->right, make_pair(height+1, hd+1))); 
+            nodeQueue.push(make_pair(node->right, make_pair(height+1, hd+1))); 
             mp.insert(make_pair(hd+1, make_pair(node->right->data,height+1)));
         }
     }

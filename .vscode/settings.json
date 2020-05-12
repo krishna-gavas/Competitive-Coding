@@ -8,6 +8,7 @@
         "istream": "cpp",
         "algorithm": "cpp",
         "vector": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "deque": "cpp"
     }
 }
