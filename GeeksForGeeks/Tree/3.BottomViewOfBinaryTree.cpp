@@ -25,7 +25,7 @@
 #include <sstream>
 #include <map>
 using namespace std;
-#define MAX_HEIGHT 100000
+
 
 struct Node
 {
