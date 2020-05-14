@@ -1,4 +1,4 @@
-// Height of Binary Tree
+// Diameter of Binary Tree
 
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
@@ -9,17 +9,18 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call height(root) function: if root is NULL return 0.
-//     find leftHeight = height(root->left) and rightHeight = height(root->right)
-//     return maximum(leftHeight,rightHeight) + 1.
-
+// call diameter(root) function: initialize height = 0 and call ret = diameterOpt(root, &height) and return ret.
+// diameterOpt(root, &height): initialize lh,rl,ldiameter and rdiameter to 0.
+//     if (root == NULL) then *height = 0 and return 0;
+//     Get the heights of left and right subtrees in lh and rh and store the returned values in ldiameter and ldiameter
+//     calculate height as *height = max(lh, rh) + 1.
+//     finally return max(lh + rh + 1, max(ldiameter, rdiameter))
 
 #include <iostream>
 #include <string>
 #include <string.h>
 #include <vector>
 #include <queue>
-#include <algorithm>
 #include <stack>
 #include <sstream>
 using namespace std;
@@ -41,7 +42,7 @@ Node* newNode(int val)
    return temp;
 }
 
-int height(struct Node* root);
+int diameter(Node *root);
 
 Node* buildTree(string str)
 {
@@ -96,27 +97,47 @@ int main() {
    t=stoi(tc);
    while(t--)
    {
-        string s; 
+        string s, ch; 
         getline(cin, s);
         Node* root = buildTree(s);
 
-        cout<<height(root)<<endl;
+        Node* head = NULL;
+        cout<<diameter(root)<<"\n";
    }
    return 0;
 }
 
-int maximum(int a, int b){
-    if(a > b)
-        return a;
-    else 
-        return b;
+int diameterOpt(Node *root, int *height){
+    /* lh --> Height of left subtree 
+     rh --> Height of right subtree */
+  int lh = 0, rh = 0; 
+   
+  /* ldiameter  --> diameter of left subtree 
+     rdiameter  --> Diameter of right subtree */
+  int ldiameter = 0, rdiameter = 0; 
+   
+  if (root == NULL) 
+  { 
+    *height = 0; 
+     return 0; /* diameter is also 0 */
+  } 
+   
+  /* Get the heights of left and right subtrees in lh and rh 
+    And store the returned values in ldiameter and ldiameter */
+  ldiameter = diameterOpt(root->left, &lh); 
+  rdiameter = diameterOpt(root->right, &rh); 
+   
+  /* Height of current node is max of heights of left and 
+     right subtrees plus 1*/
+  *height = max(lh, rh) + 1; 
+   
+  return max(lh + rh + 1, max(ldiameter, rdiameter));
 }
 
-int height(struct Node* root){
-    if(root==NULL)
+int diameter(Node *root){
+    if(root == NULL)
         return 0;
-    int leftHeight = height(root->left);
-    int rightHeight = height(root->right);
-    int ret =  maximum(leftHeight,rightHeight);
-    return ret+1;
+    int height = 0;
+    int ret = diameterOpt(root, &height);
+    return ret;
 }

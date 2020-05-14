@@ -83,16 +83,6 @@ void leftView(Node *root)
 {
     if(root == NULL)
         return;
-    // Node* tempNode = root;
-    // while(tempNode != NULL){
-    //     if((tempNode->left != NULL && tempNode->left->data == 'N') || (tempNode->left == NULL)){
-    //             cout<<tempNode->data<<" ";
-    //             tempNode = tempNode->right;
-    //             continue;
-    //     }
-    //     cout<<tempNode->data<<" ";
-    //     tempNode = tempNode->left;
-    // }
 
     queue<pair<Node *, int>> q;
     q.push(make_pair(root,0));

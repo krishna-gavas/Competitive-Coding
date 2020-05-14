@@ -1,4 +1,4 @@
-// Given a binary tree, check whether it is a mirror of itself
+// Maximum Path Sum
 
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
