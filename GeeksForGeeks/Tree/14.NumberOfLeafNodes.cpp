@@ -1,4 +1,4 @@
-// Diameter of Binary Tree
+// Count Leaves in Binary Tree
 
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
@@ -9,12 +9,12 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call diameter(root) function: initialize height = 0 and call ret = diameterOpt(root, &height) and return ret.
-// diameterOpt(root, &height): initialize lh,rl,ldiameter and rdiameter to 0.
-//     if (root == NULL) then *height = 0 and return 0;
-//     Get the heights of left and right subtrees in lh and rh and store the returned values in ldiameter and ldiameter
-//     calculate height as *height = max(lh, rh) + 1.
-//     finally return max(lh + rh + 1, max(ldiameter, rdiameter))
+// call countLeaves(root) function: 
+//     if root is NULL return 0, initialize count = 0.
+//     create a queue for level order traversing of tree and push root to it.
+//     at every iteration make node = q.front() and if node->left and node->right both are null then increment count.
+//     if(node->left != NULL) q.push(node->left) and if(node->right != NULL) q.push(node->right).
+//     finally return count
 
 #include <iostream>
 #include <string>
@@ -42,7 +42,7 @@ Node* newNode(int val)
    return temp;
 }
 
-int diameter(Node *root);
+int countLeaves(Node *root);
 
 Node* buildTree(string str)
 {
@@ -101,42 +101,35 @@ int main() {
         getline(cin, s);
         Node* root = buildTree(s);
 
-        cout<<diameter(root)<<"\n";
+        cout<<countLeaves(root)<<"\n";
    }
    return 0;
 }
 
-int diameterOpt(Node *root, int *height){
-    /* lh --> Height of left subtree 
-     rh --> Height of right subtree */
-  int lh = 0, rh = 0; 
-   
-  /* ldiameter  --> diameter of left subtree 
-     rdiameter  --> Diameter of right subtree */
-  int ldiameter = 0, rdiameter = 0; 
-   
-  if (root == NULL) 
-  { 
-    *height = 0; 
-     return 0; /* diameter is also 0 */
-  } 
-   
-  /* Get the heights of left and right subtrees in lh and rh 
-    And store the returned values in ldiameter and ldiameter */
-  ldiameter = diameterOpt(root->left, &lh); 
-  rdiameter = diameterOpt(root->right, &rh); 
-   
-  /* Height of current node is max of heights of left and 
-     right subtrees plus 1*/
-  *height = max(lh, rh) + 1; 
-   
-  return max(lh + rh + 1, max(ldiameter, rdiameter));
-}
-
-int diameter(Node *root){
+int countLeaves(Node *root){
     if(root == NULL)
         return 0;
-    int height = 0;
-    int ret = diameterOpt(root, &height);
-    return ret;
+
+    queue<Node *> q; 
+    int count = 0;
+    q.push(root);
+
+    while (q.empty() == false) 
+    { 
+        Node *node = q.front(); 
+  
+        if(node->left == NULL && node->right == NULL)
+            count++;
+
+        q.pop(); 
+
+        if(node->left != NULL){
+            q.push(node->left);
+        }
+
+        if(node->right != NULL){
+            q.push(node->right);
+        }
+    }
+    return count;
 }

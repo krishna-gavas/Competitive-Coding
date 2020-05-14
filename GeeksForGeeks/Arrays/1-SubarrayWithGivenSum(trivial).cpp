@@ -1,4 +1,7 @@
 // Subarray with given sum (Trivial)
+
+
+
 #include <iostream>
 using namespace std;
 
@@ -27,8 +30,7 @@ int main() {
 	                stop = j+1;
                     flag = 1;
 	                break;
-	            }
-            
+	            }           
 	        }
 	        if(flag==1)
 	            break;
