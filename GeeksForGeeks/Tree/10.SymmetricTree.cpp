@@ -22,10 +22,8 @@
 #include <string.h>
 #include <vector>
 #include <queue>
-#include <deque>
 #include <stack>
 #include <sstream>
-#include <map>
 using namespace std;
 
 struct Node
