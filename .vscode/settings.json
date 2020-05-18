@@ -9,6 +9,8 @@
         "algorithm": "cpp",
         "vector": "cpp",
         "queue": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "ratio": "cpp",
+        "stack": "cpp"
     }
 }

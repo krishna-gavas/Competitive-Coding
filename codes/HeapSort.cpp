@@ -17,8 +17,7 @@ void HeapAdjust(int A[],int i,int n){
             A[k] = A[j];
             k = j;
             A[k] = v;
-        }
-        
+        }       
     }
 }
 

@@ -1,5 +1,15 @@
 // Roman Number to Integer
 
+// Create a map containing roman letters and their corresponding interger values
+// for each test case input a string and initialize sum = 0
+//     for i=0 to string length do:
+//         if( i is last character ) then num = int value of that character and i++
+//         else if(int value of ith character < int value of (i+1)th character) then num = int value of (i+1)th - int value of ith character and i+=2
+//         else num = int value of that character 
+//         sum = sum + num 
+//     print sum.
+
+
 #include <iostream>
 #include <string>
 #include <map>

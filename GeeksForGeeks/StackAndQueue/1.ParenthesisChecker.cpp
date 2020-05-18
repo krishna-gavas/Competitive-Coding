@@ -1,5 +1,12 @@
 // Parenthesis Checker
 
+// call checkParenthesis(str): create a stack s and store string length into len. 
+// for i=0 to len: 
+//     if(str[i] is '(' or '{' or '[') push it to stack 
+//     else if(str[i] is ')' or '}' or ']' ): if s is empty return false 
+//         else if (s.top() != '(' && str[i] == ')') or (s.top() != '{' && str[i] == '}') or (s.top() != '[' && str[i] == ']') return false else s.pop(). 
+// if stack is empty return true else false 
+
 #include <iostream>
 #include <string>
 #include <stack>
@@ -24,11 +31,11 @@ bool checkParenthesis(string str){
                 else
                     s.pop();
             }
-        }
-        if( s.empty())
-            return true;
-        else 
-            return false;
+    }
+    if( s.empty())
+        return true;
+    else 
+        return false;
 }
 
 int main() {

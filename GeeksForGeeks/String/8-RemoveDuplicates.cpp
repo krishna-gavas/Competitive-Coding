@@ -1,8 +1,10 @@
 // Remove Duplicates
 
+// create a char array as count[256] ={0}, input string and store string length in len.
+// for( i=0 to len): if count[character] is zero increase count and print that character.
+
 #include <iostream>
 #include <string>
-#include <map>
 using namespace std;
 
 int main() {

@@ -1,5 +1,15 @@
 // Merge two sorted linked lists
 
+// Input 2 linked list and then call sortedMerge(head1, head2);
+// sortedMerge(head1, head2) function: create 2 nodes namely head and temp and initialize flag = 0.
+//     while(head1 != NULL && head2 != NULL): 
+//         if(head1->data < head2->data): if flag is 0 then head = head1 and temp = head else temp->next = head1 and temp = temp->next finally head1 = hrad1->next.
+//         else: if flag is 0 then head = head2 and temp = head else temp->next = head2 and temp = temp->next finally head2 = head2->next.
+//         flag = 1;
+//     while(list1 is not empty): temp->next = head1, temp = temp->next, head1 = head1->next
+//     while(list2 is not empty): temp->next = head2, temp = temp->next, head2 = head2->next
+//     return head.
+
 #include <iostream>
 using namespace std;
 
