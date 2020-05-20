@@ -1,5 +1,14 @@
 // Heap Sort
 
+// heapSort(arr, n): call buildHeap(arr, n) and then 
+//     for( i=last index to first index): swap(arr[0],arr[i]) and call heapify(arr, i, 0).
+
+// buildHeap(arr, n): for(i=last parent node to first parent node) call heapify(arr,n,i).
+
+// heapify(arr,n,i): initialize l = left child, r = right child and largest = i;
+//     if(l < n and arr[l] > arr[i]) then largest = l.
+//     if (r < n && arr[r] > arr[largest]) then largest = r.
+//     if(largest != i) then swap(arr[i], arr[largest]) and call heapify(arr, n, largest).
 
 
 #include <iostream>
@@ -7,38 +16,23 @@
 using namespace std;
 
 void heapify(int arr[], int n, int i)  {
-    // // Your Code Here
-    int k=i,v=arr[k];
-    bool heap = false;
-    while(!heap && (2*(k+1) <= n)){
-        int j = 2*(k+1);
-        if(j < n)
-            if(arr[j-1] <= arr[j])
-                j = j + 1;
-        if( v >= arr[j-1])
-            heap = true;
-        else
-        {
-            arr[k] = arr[j-1];
-            k = j-1;
-            arr[k] = v;
-        }       
+    int l = 2*i + 1;
+    int r = 2*i + 2;
+    int largest = i;
+    if (l < n && arr[l] > arr[i]) 
+        largest = l;
+    if (r < n && arr[r] > arr[largest]) 
+        largest = r;
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
     }
-    // int l = 2*i + 1;
-    // int r = 2*i + 2;
-    // int smallest = i;
-    // if (l < n && arr[l] < arr[i]) smallest = l;
-    // if (r < n && arr[r] < arr[smallest]) smallest = r;
-    // if (smallest != i) {
-    //     swap(arr[i], arr[smallest]);
-    //     heapify(arr,smallest,n);
-    // }
 }
 
 void buildHeap(int arr[], int n)  { 
     // Your Code Here
     for(int i=((n/2)-1);i>=0;i--)
-        heapify(arr,n+1,i);
+       heapify(arr,n,i);
     
 }
 
