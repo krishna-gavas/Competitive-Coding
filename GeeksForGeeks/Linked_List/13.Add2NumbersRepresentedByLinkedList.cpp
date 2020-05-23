@@ -1,5 +1,19 @@
 // Add two numbers represented by linked lists
 
+// addTwoLists(head1, head2): create a head node and initialize temp=0.
+//     while(head1 and head2 are not NULL): num = head1->data + head2->data + temp
+//         if(num > 9) then temp = num/10 and num=num%10 else temp = 0.
+//         call Insert(&head, num) and make head1 = head1->next and head2 = head2->next.
+//     while(head1 != NULL): num = head1->data + temp
+//         if(num > 9) then temp = num/10 and num=num%10 else temp = 0.
+//         call Insert(&head, num) and make head1 = head1->next.
+//     while(head2 != NULL): num = head2->data + temp
+//         if(num > 9) then temp = num/10 and num=num%10 else temp = 0.
+//         call Insert(&head, num) and make head2 = head2->next.
+//     if(temp != 0) then call Insert(&head, temp)
+//     finally return head.
+
+
 #include <iostream>
 using namespace std;
 

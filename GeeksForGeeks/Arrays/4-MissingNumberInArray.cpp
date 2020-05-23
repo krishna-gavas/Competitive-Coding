@@ -1,4 +1,9 @@
 // Missing number in array
+
+// Initialize sum = 0 and total = (N*(N+1))/2.
+// find sum of all elements and store it in sum.
+// print total-sum
+
 #include <iostream>
 using namespace std;
 

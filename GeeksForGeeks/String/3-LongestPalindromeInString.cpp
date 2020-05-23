@@ -13,12 +13,15 @@ int main() {
         int len = str1.length(),start,begin1,begin2;
         int l,r,count,max1=0,max2=0;
 
-        // //-------------even length palindrome----------------
-		for(int i=1;i<len;i++){
+        if(len < 2)
+            cout<<str1<<endl;
+
+        // //-------------Odd length palindrome----------------
+		for(int i=1;i<len-1;i++){
             l = i-1;
             r = i+1;
             count = 1;
-            while((str1[l]==str1[r]) && (l>=0) && (r<=len)){
+            while((l>=0) && (r<len) && (str1[l]==str1[r])){
                 count = count + 2;
                 start = l;
                 l--;
@@ -30,16 +33,17 @@ int main() {
             }
         }          
 
-        // -------------Odd length palindrome----------------
-        int j=1;
-        for(int i=0;i<len-1;i++){         
+        // -------------even length palindrome----------------
+        int j;
+        for(int i=0;i<len-1;i++){   
+            j = i+1;
             count = 0;
             if(str1[i]==str1[j]){
                 l = i-1;
                 r = j+1;
                 count = count + 2;
                 start = l;
-                while((str1[l]==str1[r]) && (l>=0) && (r<=len)){
+                while((l>=0) && (r<len) && (str1[l]==str1[r])){
                     count = count + 2;
                     start = l;
                     l--;
@@ -50,7 +54,6 @@ int main() {
                     begin2 = start;
                 }
             }
-            j++;
         }
 
         if(max1 > max2)

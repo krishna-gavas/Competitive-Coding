@@ -1,4 +1,12 @@
 // Count the Triplets (using index array approach)
+
+// Initialize count and flag to 0.
+// make an index array to store elements as index values as index[arr[i]] = 1.
+// for(i=0 to N-1):
+// 	for(j=i+1 to N):
+// 		if((index[arr[i]+arr[j]])==1): increment count and make flag = 1.
+// if(flag == 1) then print count else print -1.
+
 #include <iostream>
 using namespace std;
 

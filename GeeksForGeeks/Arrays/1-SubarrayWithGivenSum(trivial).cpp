@@ -1,5 +1,13 @@
 // Subarray with given sum (Trivial)
 
+// initialize flag, start and stop as 0.
+// for(i=0 to N): initialize sum = arr[i].
+// 	if(sum == S) then start = stop = i+1 and flag = 1.
+// 	for( j=i+1 to N): sum = sum + arr[j].
+// 		if(sum == S) then start = stop = i+1 and flag = 1 and break.
+// 	if(flag == 1) then break.
+// if(start==0 && stop==0) then print -1 else print start and stop.
+
 
 
 #include <iostream>

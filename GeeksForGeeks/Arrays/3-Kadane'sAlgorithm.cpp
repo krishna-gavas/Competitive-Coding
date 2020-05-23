@@ -1,4 +1,12 @@
 // Kadane's Algorithm to find maximum subarray sum
+
+// Initialize localmax and globalmax to 0.
+// for(i=0 to N):
+// 	if(i==0 && arr[i]<0) then localmax = globalmax = arr[0].
+// 	if(arr[i] > arr[i] + localmax) then localmax = arr[i] else localmax = arr[i] + localmax.
+// 	if(localmax > globalmax) then globalmax = localmax.
+// print globalmax
+
 #include <iostream>
 using namespace std;
 

@@ -1,5 +1,18 @@
 // Longest Distinct characters in string
 
+// Initialize max,curlen and start to 0, set len = str.length().
+// for(i=0 to len): 
+//     if(v1 contains str[i])
+//         if(curlen > max) then max = curlen.
+//         store index of str[i] into index , initialize coint=1, it1 and it2 to v1.begin.
+//         increment it2 and count till it2 = it.
+//         increment it2 and if(it1 == it2) then v1.erase(it1) else v1.erase(it1,it2).
+//         push str[i] to v1, increment curlen and make curlen = curlen - count.
+//     else: 
+//         push str[i] to v1, increment curlen and if(curlen > max) then max = curlen.
+// print max.
+
+
 #include <iostream>
 #include <string>
 #include <vector>

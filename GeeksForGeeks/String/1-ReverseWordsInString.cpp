@@ -1,6 +1,10 @@
 // Reverse words in a given string(using '.' as delimiter)
+
+input str1 and store its length in len
+
 // len is the total length of the string
 // len1 is length of substring
+
 #include <iostream>
 #include <string>
 using namespace std;

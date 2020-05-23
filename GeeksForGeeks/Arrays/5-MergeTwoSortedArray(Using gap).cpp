@@ -1,4 +1,7 @@
 //Merge Two sorted array without extra space(Using gap approach)
+
+
+
 #include <iostream>
 using namespace std;
 
@@ -8,7 +11,7 @@ int nextGap(int n){
 	return n/2 + n%2;
 }
 
-int main() {
+int main(){
 	int T;
 	cin>>T;
 	while(T--){

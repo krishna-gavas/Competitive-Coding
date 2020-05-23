@@ -1,5 +1,18 @@
 // Stack using two queues
 
+// Create 2 queues q1 and q2.
+// push(x):
+//     while(q2 is not empty) pop q2.front() and push it to q1.
+//     push x to q1.
+
+// pop();
+//     if both q1 and q2 are empty return -1.
+//     while(q2 is not empty) pop q2.front() and push it to q1.
+//     initialize len = q1.size().
+//     while(len > 1) pop q1.front() and push it to q2 and decrement len.
+//     val = q1.front(), pop q1.front() and return val.
+    
+
 #include <iostream>
 #include <queue>
 using namespace std;

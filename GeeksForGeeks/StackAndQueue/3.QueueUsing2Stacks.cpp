@@ -1,5 +1,17 @@
 // Queue using two Stacks
 
+// Create 2 stacks s1 and s2.
+// push(x): 
+//     while(s2 is not empty) pop s2.top() and push it to s1.
+//     push x to s1.
+
+// pop():
+//     if both s1 and s2 are empty return -1.
+//     if(s2 is empty)
+//         while(s1 is not empty) pop s1.top() and push it to s2.
+//     val = s2.top(), pop s2.top() and return val.
+
+
 #include <iostream>
 #include <stack>
 using namespace std;

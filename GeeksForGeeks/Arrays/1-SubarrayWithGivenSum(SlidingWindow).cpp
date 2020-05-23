@@ -1,4 +1,11 @@
 // Subarray with given sum(Sliding window technique)
+
+// Initialize flag,head and sum as 0.
+// for(i=0 to N): sum = sum + arr[i].
+// 	while( sum > S): sum = sum - arr[head] and increment head.
+// 	if(sum == S) then print head+1 to i+1, make flag = 1 and break.
+// if(flag == 0) then print -1;
+
 #include <iostream>
 using namespace std;
 

@@ -1,4 +1,10 @@
 //Merge Two sorted array without extra space(Trivial approach)
+
+X is size of array P and Y is size of array Q
+for(i=0 to X):
+	for(j=0 to Y):
+		
+
 #include <iostream>
 using namespace std;
 
