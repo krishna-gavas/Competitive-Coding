@@ -16,7 +16,7 @@ int main() {
     int T;
     cin>>T;
     while(T--){
-        int N,S;
+        int N;
         cin>>N;
         cout<<keyboard(N)<<endl;
     }
