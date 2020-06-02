@@ -1,4 +1,4 @@
-// Find all four sum numbers
+// Swapping pairs make sum equal
 
 
 #include <iostream>
