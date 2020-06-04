@@ -1,8 +1,12 @@
 // Swapping pairs make sum equal
 
+// Create 2 vectors A and B to store elements of 2 arrays, calulate sums of both A and B as sum1 and sum2.
+// calculate difference of sum1 and sum2 as diff. if diff is odd exit the corresponding test case.
+// diff = diff/2.
+// if(N < M) then find an element in B value is either (A[i] - diff) or (diff+A[i]) .if found then print 1 else print -1.
+// else find an element in A value is either (B[i] - diff) or (diff+B[i]) .if found then print 1 else print -1.
 
 #include <iostream>
-#include <map>
 #include <vector>
 #include <algorithm>
 using namespace std;

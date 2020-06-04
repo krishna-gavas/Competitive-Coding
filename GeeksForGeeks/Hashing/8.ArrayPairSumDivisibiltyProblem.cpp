@@ -1,5 +1,7 @@
 // Array Pair Sum Divisibility Problem
 
+// Check if(N is odd) then print false
+// else if(sum % K == 0) then print true else print false.
 
 #include <iostream>
 #include <map>
@@ -7,43 +9,27 @@
 #include <algorithm>
 using namespace std;
 
-vector <int> countDistinct(int A[], int n, int k){
-    map<int, int> mp;
-    map<int, int> :: iterator it;
-    vector<int> result;
-    int head = 0,size;
-    for(int i=0;i<n;i++){
-        if(i==0)
-            head = i;
-        if(i < k-1){
-            mp[A[i]] = i;
-        }
-        else{
-            mp[A[i]] = i;
-            size = mp.size();
-            result.push_back(size);
-            if(mp[A[head]] == head)
-                mp.erase(A[head]);
-            head++;
-        }
-    }
-    return result;
-}
 
 int main(){
     int t;
     cin>>t;
     while(t--){
-        int N, K;
+        int N, K,sum=0;
         cin>>N;
         int A[N];
-        for(int i=0;i<N;i++) 
+        for(int i=0;i<N;i++){
             cin>>A[i];
+            sum += A[i];
+        }
         cin>>K;
-        vector<int> result = countDistinct(A,N,K);
-        for(int i : result)
-            cout<<i<<" ";
-        cout<<endl;
+        if(N % 2 == 1)
+            cout<<"False"<<endl;
+        else{
+            if(sum % k == 0)
+                cout<<"True"<<endl;
+            else 
+                cout<<"False"<<endl;
+        }
     }
     return 0;
 }
