@@ -13,7 +13,6 @@ int main(){
         int N,X;
         cin>>N;
         vector<int> A,B;
-        map<int, int> mp1,mp2;
         for(int i=0;i<N;i++){
             cin>>X;
             A.push_back(X);
