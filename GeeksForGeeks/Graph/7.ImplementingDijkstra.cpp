@@ -1,7 +1,7 @@
 // Implementing Dijkstra
 
 // dijkstra(g, s, V): dist contains shortest distance from src to i, vis contains true for visited nodes, initialize dist[src] = 0.
-//     Pick the minimum distance vertex from the set of unvisited verticesand Mark the picked vertex as processed.
+//     Pick the minimum distance vertex from the set of unvisited vertices and Mark the picked vertex as processed.
 //     Update dist value of the adjacent vertices of the picked vertex as follows: 
 //     if(dist[u] + g[u][v] < dist[v]) then  dist[v] = dist[u] + g[u][v].
 //     return dist.
