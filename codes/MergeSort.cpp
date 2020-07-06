@@ -13,14 +13,13 @@ void Merge(int A[],int l,int mid,int r){
 		}
 		k = k + 1;
 	}
-		while(i <= mid)
-			B[k++] = A[i++];
-		while(j <= r)
-			B[k++] = A[j++];
+	while(i <= mid)
+		B[k++] = A[i++];
+	while(j <= r)
+		B[k++] = A[j++];
 
-		for(int j=l;j<=r;j++)
-			A[j] = B[j];
-	
+	for(int j=l;j<=r;j++)
+		A[j] = B[j];	
 }
 
 void MergeSort(int A[],int l,int r){
