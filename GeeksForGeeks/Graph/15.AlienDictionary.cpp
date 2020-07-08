@@ -1,5 +1,22 @@
 // Alien Dictionary
 
+// findOrder(str[], N, K): Create a adjacency list and a visited array.
+//     Build Graph:
+//     for(i=0 to N):
+//         for(j=0 to str[i].length): vis[str[i][j]-'a'] = 0.
+//         if(i > 0): w1 = str[i-1], w2 = str[i] and len = min(length of w1, length of w2).
+//             for(j=0 to len): c1 = w1[j], c2 = w2[j]
+//                 if(c1 != c2) then adj[c1-'a'].push_back(c2-'a') and break out of the loop.
+    
+//     Topological Sort:
+//     create an array to store indegree of all nodes and initialize count to 0.
+//     Create a queue and push all the nodes to it whose inDegree is 0.
+//     while(q is not empty): pop the front of q and append it to string res.
+//         for(it = g[start].begin() to g[start].end()): increment indegree[*it] and if(indegree[*it] == 0) then push *it to q.
+//         increment count.
+//     return res.
+
+
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -9,26 +26,12 @@ using namespace std;
 
 string order;
 
-bool dfs(vector<bool> adj[],int vis[],string sb, int i){
-    vis[i] = 1;
-    for(int j=0;j<26;j++){
-        if(adj[i][j]){
-            if(vis[j] == 1)
-                return false;
-            if(vis[j] == 0){
-                if(!dfs(adj,vis,sb,j))
-                    return false;
-            }
-        }
-    }
-    vis[i] = 2;
-    sb = sb + char(i + 'a');
-    return true;
-}
-
 string findOrder(string str[], int N, int K) {
-    vector<bool> adj[26];
-    int vis[26] = {-1};
+    vector<int> adj[K];
+    int vis[K];
+    for(int i=0;i<K;i++){
+        vis[i] = -1;
+    }
 
     // Build Graph
     for(int i=0;i<N;i++){
@@ -41,21 +44,73 @@ string findOrder(string str[], int N, int K) {
             for(int j=0;j<len;j++){
                 char c1 = w1[j], c2 = w2[j];
                 if(c1 != c2){
-                    adj[c1-'a'][c2-'a'] = true;
+                    adj[c1-'a'].push_back(c2-'a');
                     break;
                 }
             }
         }
     }
-    string sb;
-    for(int i=0;i<26;i++){
-        if(vis[i] == 0){
-            if(!dfs(adj,vis,sb,i))
-                return "";
+    
+    // Topological Sort
+    string res;
+    vector<int> :: iterator it;
+    queue<int> q;
+    int indegree[K],count=0,start,k=0;
+    for (int i = 0; i < K; i++)
+        indegree[i] = 0;
+    for (int i = 0; i < K; i++)
+        for(it = adj[i].begin(); it != adj[i].end(); it++)
+            indegree[*it]++;
+
+    for (int i = 0; i < K; i++)
+        if(indegree[i] == 0)
+            q.push(i);
+    
+    while(!q.empty()){
+        start = q.front();
+        q.pop();
+        res = res + char(start + 'a');
+        for(it = adj[start].begin(); it != adj[start].end(); it++){
+            indegree[*it]--;
+            if(indegree[*it] == 0)
+                q.push(*it);
         }
+        count++;
     }
-    reverse(sb.begin(), sb.end());
-    return sb;
+    return res;
+    
+    cout<<res<<endl;
+    return res;
+}
+
+int* topoSort(int V, vector<int> g[])
+{
+    int *res = new int[V];
+    vector<int> :: iterator it;
+    queue<int> q;
+    int indegree[V],count=0,start,k=0;
+    for (int i = 0; i < V; i++)
+        indegree[i] = 0;
+    for (int i = 0; i < V; i++)
+        for(it = g[i].begin(); it != g[i].end(); it++)
+            indegree[*it]++;
+
+    for (int i = 0; i < V; i++)
+        if(indegree[i] == 0)
+            q.push(i);
+
+    while(!q.empty()){
+        start = q.front();
+        q.pop();
+        res[k++] = start;
+        for(it = g[start].begin(); it != g[start].end(); it++){
+            indegree[*it]--;
+            if(indegree[*it] == 0)
+                q.push(*it);
+        }
+        count++;
+    }
+    return res;
 }
 
 bool f(string a, string b){
