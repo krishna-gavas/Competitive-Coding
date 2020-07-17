@@ -1,4 +1,4 @@
-// Minimize the sum of product
+// Minimize the sum of product(Not Submitted)
 
 
 #include <iostream>
