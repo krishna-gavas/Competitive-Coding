@@ -12,21 +12,9 @@ public:
                 continue;
             }
             else if(i == 1){
-                if(nums1[i] > med1){
-                    med2 = nums1[i];
-                    minHeap.push_back(nums1[i]);
-                    make_heap(minHeap.begin(), minHeap.end(), greater<int>());
-                }
-                else{
-                    med2 = med1;
-                    med1 = nums1[i];
-                    minHeap.push_back(med2);
-                    make_heap(minHeap.begin(), minHeap.end(), greater<int>());
-                    pop_heap(maxHeap.begin(), maxHeap.end()); 
-                    maxHeap.pop_back();
-                    maxHeap.push_back(med1);
-                    push_heap(maxHeap.begin(), maxHeap.end());
-                }
+                med2 = nums1[i];
+                minHeap.push_back(nums1[i]);
+                make_heap(minHeap.begin(), minHeap.end(), greater<int>());        
                 continue;
             }
             med1 = maxHeap.front();
@@ -64,7 +52,7 @@ public:
                 make_heap(maxHeap.begin(), maxHeap.end());
                 continue;
             }
-            med1 = maxHeap.front();
+
             if(nums2[i] > med1){   
                 minHeap.push_back(nums2[i]);
                 push_heap(minHeap.begin(), minHeap.end(), greater<int>());
@@ -73,6 +61,7 @@ public:
                 maxHeap.push_back(nums2[i]);
                 push_heap(maxHeap.begin(), maxHeap.end());
             }
+            
             if(abs(int(maxHeap.size() - minHeap.size())) > 1){
                 if(maxHeap.size() > minHeap.size()){
                     minHeap.push_back(maxHeap.front());
