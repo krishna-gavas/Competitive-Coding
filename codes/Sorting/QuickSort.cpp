@@ -17,7 +17,7 @@ using namespace std;
 //     return (i + 1);  
 // }
 
-//Using first element as pivot
+// Using first element as pivot
 int Partition(int A[],int l,int r){
     int pivot =A[l];   
     int i = (r + 1);  
