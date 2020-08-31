@@ -1,5 +1,12 @@
 // Max length chain
 
+// maxChainLen:
+//     Initialize count = 1 and sort P based on first value
+//     make ele = P[0].first
+//     for(i=1 to N)
+//         if(P[i].second < ele) then ele = P[i].first and increment count
+//     return count
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
