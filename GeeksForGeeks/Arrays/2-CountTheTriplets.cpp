@@ -1,5 +1,29 @@
 // Count the Triplets (using index array approach)
 
+// Question:
+// Given an array of distinct integers. The task is to count all the triplets such that sum of two elements
+//  equals the third element.
+
+// Input:
+// The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. 
+// Each test case consists of two lines. First line of each test case contains an Integer N denoting size of 
+// array and the second line contains N space separated elements.
+
+// Output:
+// For each test case, print the count of all triplets, in new line. If no such triplets can form, print "-1".
+
+// Example:
+// Input:
+// 2
+// 4
+// 1 5 3 2
+// 3
+// 3 2 7
+// Output:
+// 2
+// -1
+
+// Solution:
 // Initialize count and flag to 0.
 // make an index array to store elements as index values as index[arr[i]] = 1.
 // for(i=0 to N-1):
