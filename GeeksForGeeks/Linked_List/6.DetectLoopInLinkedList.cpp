@@ -1,5 +1,26 @@
 // Detect Loop in linked list
 
+// Question:
+// Given a linked list of N nodes. The task is to check if the the linked list has a loop. 
+// Linked list can contain self loop.
+
+// Example:
+// Input:
+// N = 3
+// value[] = {1,3,4}
+// x = 2
+// Output: True
+
+// Input:
+// N = 4
+// value[] = {1,8,3,4}
+// x = 0
+// Output: False
+
+// Your Task:
+// The task is to complete the function detectloop() which contains reference to the head as only argument. 
+// This function should return 1 if linked list contains loop, else return 0.
+
 #include <iostream>
 #include <string>
 using namespace std;

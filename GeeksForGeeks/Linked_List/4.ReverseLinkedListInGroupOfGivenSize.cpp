@@ -1,5 +1,19 @@
 // Reverse a Linked List in groups of given size.
 
+// Question:
+// Given a linked list of size N. The task is to reverse every k nodes (where k is an input to the function) 
+// in the linked list.
+
+// Example:
+// Input:
+// LinkedList: 1->2->2->4->5->6->7->8
+// K = 4
+// Output: 4 2 2 1 8 7 6 5
+
+// Your Task:
+// The task is to complete the function reverse() which should reverse the linked list in group of size k 
+// and return the head of the modified linked list.
+
 #include <iostream>
 #include <string>
 using namespace std;

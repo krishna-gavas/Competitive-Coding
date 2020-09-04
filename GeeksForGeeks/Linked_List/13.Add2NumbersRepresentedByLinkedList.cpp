@@ -1,5 +1,21 @@
 // Add two numbers represented by linked lists
 
+// Question:
+// Given two numbers represented by two linked lists of size N and M. The task is to return a sum list. 
+// The sum list is a linked list representation of the addition of two input numbers.
+
+// Input:
+// N = 2
+// valueN[] = {4,5}
+// M = 3
+// valueM[] = {3,4,5}
+// Output: 3 9 0
+
+// Your Task:
+// The task is to complete the function addTwoLists() which has node reference of both the linked lists 
+// and returns the head of the new list.
+
+// Solution:
 // addTwoLists(head1, head2): create a head node and initialize temp=0.
 //     while(head1 and head2 are not NULL): num = head1->data + head2->data + temp
 //         if(num > 9) then temp = num/10 and num=num%10 else temp = 0.

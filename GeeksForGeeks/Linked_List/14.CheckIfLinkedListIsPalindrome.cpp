@@ -1,5 +1,17 @@
 // Check if Linked List is Palindrome
 
+// Question:
+// Given a singly linked list of size N of integers. The task is to check if the given linked list is palindrome or not.
+
+// Input:
+// N = 3
+// value[] = {1,2,1}
+// Output: 1
+
+// Your Task:
+// The task is to complete the function isPalindrome() which takes head as reference as the only parameter 
+// and returns true or false if linked list is palindrome or not respectively.
+
 #include <iostream>
 using namespace std;
 

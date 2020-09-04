@@ -1,5 +1,19 @@
 // Nth node from end of linked list
 
+// Question:
+// Given a linked list consisting of L nodes and given a number N. 
+// The task is to find the Nth node from the end of the linked list.
+
+// Example:
+// Input:
+// N = 2
+// LinkedList: 1->2->3->4->5->6->7->8->9
+// Output: 8
+
+// Your Task:
+// The task is to complete the function getNthFromLast() which takes two arguments: reference to head and N 
+// and you need to return Nth from the end or -1 in case node doesn't exist..
+
 #include <iostream>
 #include <string>
 using namespace std;

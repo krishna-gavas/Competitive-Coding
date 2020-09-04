@@ -1,5 +1,21 @@
 // Merge two sorted linked lists
 
+// Question:
+// Given two sorted linked lists consisting of N and M nodes respectively. The task is to merge both of the 
+// list (in-place) and return head of the merged list.
+// Note: It is strongly recommended to do merging in-place using O(1) extra space.
+
+// Input:
+// N = 4, M = 3 
+// valueN[] = {5,10,15,40}
+// valueM[] = {2,3,20}
+// Output: 2 3 5 10 15 20 40
+
+// Your Task:
+// The task is to complete the function sortedMerge() which takes references to the heads of two linked 
+// lists as the arguments and returns the head of merged linked list.
+
+// Solution:
 // Input 2 linked list and then call sortedMerge(head1, head2);
 // sortedMerge(head1, head2) function: create 2 nodes namely head and temp and initialize flag = 0.
 //     while(head1 != NULL && head2 != NULL): 

@@ -1,5 +1,20 @@
 // Intersection Point in Y Shapped Linked Lists
 
+// Question:
+// Given two singly linked lists of size N and M, write a program to get the point where two 
+// linked lists intersect each other.
+
+// Example: 
+// Input:
+// LinkList1 = {10,20,5,10}
+// LinkList2 = {30,40,50,5,10}
+// Output: 5
+
+// Your Task:
+// The task is to complete the function intersetPoint() which finds the point of intersection of two 
+// linked list. The function should return data value of a node where two linked lists merge. 
+// If linked list do not merge at any point, then it should return -1.
+
 #include <iostream>
 #include <string>
 using namespace std;

@@ -1,5 +1,20 @@
 // Delete without head pointer
 
+// Question:
+// You are given a pointer/ reference to the node which is to be deleted from the linked list of N nodes. 
+// The task is to delete the node. Pointer/ reference to head node is not given. 
+// Note: No head reference is given to you.
+
+// Input:
+// N = 4
+// value[] = {10,20,4,30}
+// node = 20
+// Output: 10 4 30
+
+// Your Task:
+// You only need to complete the function deleteNode that takes reference to the node that needs to be deleted. 
+// The printing is done automatically by the driver code.
+
 #include <iostream>
 using namespace std;
 

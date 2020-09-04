@@ -1,5 +1,20 @@
 // Rotate a Linked List
 
+// Question:
+// Given a singly linked list of size N. The task is to rotate the linked list counter-clockwise by k nodes, 
+// where k is a given positive integer smaller than or equal to length of the linked list.
+
+// Example:
+// Input:
+// N = 8
+// value[] = {1,2,3,4,5,6,7,8}
+// k = 4
+// Output: 5 6 7 8 1 2 3 4
+
+// Your Task:
+// The task is to complete the function rotate() which takes a head reference as the first argument 
+// and k as the second argument. The printing is done automatically by the driver code
+
 #include <iostream>
 #include <string>
 using namespace std;
