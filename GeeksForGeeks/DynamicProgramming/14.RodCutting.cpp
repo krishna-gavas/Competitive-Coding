@@ -1,4 +1,4 @@
-// Box Stacking
+// Maximize The Cut Segments
 
 
 #include <iostream>
@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 
-int CoinChange(int coin[],int sum, int N){
+int RodCutting(int coin[],int sum, int N){
     int DP[N+1][sum+1];
     for(int i=0;i<=N;i++){
         for(int j=0;j<=sum;j++){
@@ -35,7 +35,7 @@ int main() {
         for(int i=0;i<N;i++)
             cin>>coin[i];
         cin>>sum;
-        cout<<CoinChange(coin,sum,N)<<"\n";
+        cout<<RodCutting(coin,sum,N)<<"\n";
 	}
 	return 0;
 }
