@@ -1,5 +1,21 @@
 // Height of Binary Tree
 
+// Question:
+// Given a binary tree, find its height.
+
+// Input:
+//   2
+//    \
+//     1
+//    /
+//  3
+// Output: 3
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function height() that 
+// takes root Node of the Tree as input and returns the Height of the Tree. If the Tree is empty, return 0. 
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

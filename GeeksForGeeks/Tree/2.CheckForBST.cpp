@@ -1,5 +1,14 @@
 // Check for BST
 
+// Question:
+// Given a binary tree. Check whether it is a BST or not.
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function isBST() 
+// which takes the root of the tree as a parameter and returns true if the given binary tree is BST, 
+// else returns false. The printing is done by the driver's code.
+
+// Solution:
 // define MAX_HEIGHT as 100000
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.

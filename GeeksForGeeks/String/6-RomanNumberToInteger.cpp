@@ -1,5 +1,25 @@
 // Roman Number to Integer
 
+// Question:
+// Given an string in roman no format (s)  your task is to convert it to integer .
+
+// Input:
+// The first line of each test case contains the no of test cases T. Then T test cases follow. Each test case 
+// contains a string s denoting the roman no.
+
+// Output:
+// For each test case in a new line print the integer representation of roman number s. 
+
+// Example:
+// Input
+// 2
+// V
+// III 
+// Output
+// 5
+// 3
+
+// Solution:
 // Create a map containing roman letters and their corresponding interger values
 // for each test case input a string and initialize sum = 0
 //     for i=0 to string length do:

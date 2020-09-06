@@ -1,5 +1,34 @@
 // Shortest Source to Destination Path
 
+// Question:
+// Given a boolean 2D matrix (0-based index), find whether there is path from (0,0) to (x,y) and if there is one 
+// path, print the minimum no of steps needed to reach it, else print -1 if the destination is not reachable. 
+// You may move in only four direction ie up, down, left and right. The path can only be created out of a cell 
+// if its value is 1.
+
+// Input:
+// The first line of input contains an integer T denoting the no of test cases. Then T test cases follow. 
+// Each test case contains two lines . The first line of each test case contains two integers n and m denoting 
+// the size of the matrix. Then in the next line are n*m space separated values of the matrix. The following 
+// line after it contains two integers x and y denoting the index of the destination.
+
+// Output:
+// For each test case print in a new line the min no of steps needed to reach the destination.
+
+// Example:
+// Input:
+// 2
+// 3 4
+// 1 0 0 0 1 1 0 1 0 1 1 1
+// 2 3
+// 3 4
+// 1 1 1 1 0 0 0 1 0 0 0 1
+// 0 3
+// Output:
+// 5
+// 3
+
+// Solution:
 // Create a vis matrix and initialize it with false. if A[x][y] or A[0][0] is 0 then print -1 and continue with next test case.
 // Create a map<pair<int,int>,int> to store distance and a queue<pair<int, int> > for BFS traversal.
 // make mp[make_pair(0,0)] = 0 , push (0,0) to queue and make vis[0][0] = true.

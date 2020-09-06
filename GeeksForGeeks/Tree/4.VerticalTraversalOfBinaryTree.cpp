@@ -1,5 +1,25 @@
 // Vertical Traversal of Binary Tree
 
+// Question:
+// Given a Binary Tree, find the vertical traversal of it starting from the leftmost level to the rightmost level.
+// If there are multiple nodes passing through a vertical line, then they should be printed as they appear in 
+// level order traversal of the tree.
+
+// Input:
+//        1
+//     /    \
+//    2      3
+//  /   \      \
+// 4     5      6
+// Output: 4 2 1 5 3 6
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function verticalOrder() 
+// which takes the root node as input and returns an array containing the vertical order traversal of the 
+// tree from the leftmost to the rightmost level. If 2 nodes lie in the same vertical level, they should be 
+// printed in the order they appear in the level order traversal of the tree.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

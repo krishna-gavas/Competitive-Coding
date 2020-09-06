@@ -1,5 +1,21 @@
 // Level order traversal in spiral form
 
+// Question:
+// Complete the function to print spiral order traversal of a tree.
+
+// Input:
+//            10
+//          /     \
+//         20     30
+//       /    \
+//     40     60
+// Output: 10 20 30 60 40
+
+// Your Task:
+// The task is to complete the function printSpiral() which prints the elements in spiral form of level order 
+// traversal. The newline is automatically appended by the driver code.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

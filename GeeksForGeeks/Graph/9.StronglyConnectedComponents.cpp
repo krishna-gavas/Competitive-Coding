@@ -1,5 +1,35 @@
 // Strongly Connected Components (Kosaraju's Algo)
 
+// Question:
+// Given a graph with N nodes and M directed edges. Your task is to complete the function kosaraju() which returns 
+// an integer denoting the number of strongly connected components in the graph.
+
+// Input:
+// The first line of input contains an integer T. Then T test cases follow. Each test case contains two integers 
+// N and M. In the next line there are M space-separated values u,v denoting an edge from u to v.
+
+// Output:
+// For each test case in a new line output will an integer denoting the no of strongly connected components present 
+// in the graph.
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function kosaraju() which takes 
+// the number of vertices V and adjacency list of the graph as inputs and returns an integer denoting the number 
+// of strongly connected components in the given graph.
+
+// Example:
+// Input:
+// 2
+// 5 5
+// 1 0 0 2 2 1 0 3 3 4
+// 3 3
+// 0 1 1 2 2 0
+
+// Output:
+// 3
+// 1
+
+// Solution:
 // kosaraju(N, g): Create an empty stack and 2 vectors vis1,vis2 and initialize them with false.
 //     Do a DFS on the original graph, keeping track of the finish times of each vertex. This can be done with a stack.
 //     Reverse the original graph g and store it in tg.

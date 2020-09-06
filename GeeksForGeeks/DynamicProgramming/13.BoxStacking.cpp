@@ -6,23 +6,9 @@
 #include <algorithm>
 using namespace std;
 
-int CoinChange(int coin[],int sum, int N){
-    int DP[N+1][sum+1];
-    for(int i=0;i<=N;i++){
-        for(int j=0;j<=sum;j++){
-            if(i==0 && j!= 0)
-                DP[i][j] = 0;
-            else if(j == 0)
-                DP[i][j] = 1;
-            else if(coin[i-1] <= j)
-                DP[i][j] = (DP[i][j - coin[i-1]]) + DP[i-1][j];
-            else 
-                DP[i][j] = DP[i-1][j];
-            cout<<DP[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    return DP[N][sum];
+int maxHeight(int height[],int width[],int length[],int n)
+{
+    //Your code here
 }
 
 int main() {
@@ -31,11 +17,15 @@ int main() {
 	while(T--){
 	    int N,sum;
         cin>>N;
-        int coin[N];
-        for(int i=0;i<N;i++)
-            cin>>coin[i];
-        cin>>sum;
-        cout<<CoinChange(coin,sum,N)<<"\n";
+        int A[1000],B[1000],C[10001];
+        for(int i=0;i<N;i++){
+            int a,b,c;
+            cin>>a>>b>>c;
+            A[i] = a;
+            B[i] = b;
+            C[i] = c;
+        }
+        cout<<maxHeight(A,B,C,N)<<"\n";
 	}
 	return 0;
 }

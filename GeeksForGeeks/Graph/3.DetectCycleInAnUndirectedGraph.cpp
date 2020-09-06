@@ -1,5 +1,39 @@
 // Detect cycle in an undirected graph
 
+// Question:
+// Given a Undirected Graph. Check whether it contains a cycle or not. 
+
+// Input:
+// The first line of the input contains an integer 'T' denoting the number of test cases. Then 'T' testcases 
+// follow. Each testcase consists of two lines. Description of testcases are as follows: The First line of each 
+// testcase contains two integers 'N' and 'M' which denotes the no of vertices and no of edges respectively. 
+// The Second line of each test case contains 'M'  space separated pairs u and v denoting that there is a 
+// bidirectional  edge from u to v .
+
+// Output:
+// The method should return 1 if there is a cycle else it should return 0.
+
+// User task:
+// You don't need to read input or print anything. Your task is to complete the function isCyclic which takes 
+// the Graph and the number of vertices as inputs and returns true if the given undirected graph contains any 
+// cycle. Else, it returns false.
+
+// Example:
+// Input:
+// 3
+// 2 1
+// 0 1
+// 4 3
+// 0 1 1 2 2 3
+// 5 4
+// 0 1 2 3 3 4 4 2
+
+// Output:
+// 0
+// 0
+// 1
+
+// Solution:
 // isCyclic(adj, V): Create a result vector to store bfs traversal, Create a queue and push first element to it.
 //     create a flag array(-1 means not in queue, 0 means in queue and 1 means visited) of size V and initialize it to -1.
 //     initialize flag[first element] = 0;

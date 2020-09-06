@@ -1,5 +1,38 @@
 // Maximum Path Sum
 
+// Question:
+// Given a binary tree in which each node element contains a number. Find the maximum possible sum from one 
+// leaf node to another.
+
+// Input :      
+//            3                               
+//          /    \                          
+//        4       5                     
+//       /  \      
+//     -10   4                          
+
+// Output: 16
+
+// Input :    
+//             -15                               
+//          /      \                          
+//         5         6                      
+//       /  \       / \
+//     -8    1     3   9
+//    /  \              \
+//   2   -3              0
+//                      / \
+//                     4  -1
+//                        /
+//                      10  
+
+// Output :  27
+
+// Your Task:  
+// You dont need to read input or print anything. Complete the function maxPathSum() which takes root node as 
+// input parameter and returns the maximum sum between 2 leaf nodes.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

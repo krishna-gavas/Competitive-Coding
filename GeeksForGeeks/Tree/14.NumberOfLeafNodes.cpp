@@ -1,5 +1,38 @@
 // Count Leaves in Binary Tree
 
+// Question:
+// Given a Binary Tree of size N , You have to count leaves in it. For example, there are two leaves in 
+// following tree
+//         1
+//      /      \
+//    10      39
+//   /
+// 5
+
+// Input:
+// First line of input contains the number of test cases T. For each test case, there will be only a single line 
+// of input which is a string representing the tree as described below: 
+// The values in the string are in the order of level order traversal of the tree where, numbers denote node 
+// values, and a character “N” denotes NULL child.
+
+// Output:
+// For each test case print the count of leaves.
+
+
+// Your Task:
+// You don't have to take input. Complete the function countLeaves() that takes root node of given tree as parameter 
+// and returns the count of leaves in tree . The printing is done by the driver code
+
+// Example:
+// Input:
+// 2
+// 3 4 2 
+// 4 8 10 7 N 5 1 3 
+// Output:
+// 2
+// 3
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

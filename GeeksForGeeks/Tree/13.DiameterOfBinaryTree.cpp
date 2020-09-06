@@ -1,5 +1,24 @@
 // Diameter of Binary Tree
 
+// Question:
+// Given a Binary Tree, find diameter of it.
+// The diameter of a tree is the number of nodes on the longest path between two leaves in the tree. 
+// The diagram below shows two trees each with diameter nine, the leaves that form the ends of a longest 
+// path are shaded (note that there is more than one path in each tree of length nine, but no path longer 
+// than nine nodes).
+
+// Input:
+//          10
+//         /   \
+//       20    30
+//     /   \ 
+//    40   60
+// Output: 4
+
+// Your Task:
+// You need to complete the function diameter() that takes node as parameter and returns the diameter.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

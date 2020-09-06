@@ -1,5 +1,23 @@
 // Check if given Binary Tree is Height Balanced or Not
 
+// Question:
+// Given a binary tree, find if it is height balanced or not. 
+// A tree is height balanced if difference between heights of left and right subtrees is not more than one 
+// for all nodes of tree. 
+
+// Input:
+//        10
+//      /   \
+//     20   30 
+//   /   \
+//  40   60
+// Output: 1
+
+// Your Task:
+// You don't need to take input. Just complete the function isBalanced() that takes root node as parameter 
+// and returns true, if the tree is balanced else returns false.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

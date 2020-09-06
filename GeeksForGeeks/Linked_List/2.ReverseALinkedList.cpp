@@ -1,4 +1,4 @@
-// Finding middle element in a linked list
+// Reverse a Linked List
 
 // Question:
 // Given a linked list of N nodes. The task is to reverse this list

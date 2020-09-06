@@ -1,5 +1,31 @@
 // Given a binary tree, check whether it is a mirror of itself
 
+// Question:
+// Given a Binary Tree. Check whether it is Symmetric or not, i.e. whether the binary tree is a Mirror 
+// image of itself or not.
+
+// Input:
+//          5
+//        /   \
+//       1     1
+//      /       \
+//     2         2
+// Output: True
+
+// Input:
+//          5
+//        /   \
+//       10     10
+//      /  \     \
+//     20  20     30
+// Output: False
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function isMirror() which 
+// takes the root of the Binary Tree as its input and returns True if the given Binary Tree is a same as 
+// the Mirror image of itself. Else, it returns False.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

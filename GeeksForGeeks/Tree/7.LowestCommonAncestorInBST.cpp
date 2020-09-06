@@ -1,5 +1,33 @@
 // Lowest Common Ancestor in a BST
 
+// Question:
+// Given a Binary Search Tree (with all values unique) and two node values. Find the Lowest Common Ancestors 
+// of the two nodes in the BST.
+
+// Input:
+//               5
+//            /    \
+//          4       6
+//         /         \
+//        3           7
+//                     \
+//                      8
+// n1 = 7, n2 = 8
+// Output: 7
+
+// Input:
+//      2
+//    /   \
+//   1     3
+// n1 = 1, n2 = 3
+// Output: 2
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function LCA() which takes 
+// the root Node of the BST and two integer values n1 and n2 as inputs and returns the Lowest Common Ancestor 
+// of the Nodes with values n1 and n2 in the given BST.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

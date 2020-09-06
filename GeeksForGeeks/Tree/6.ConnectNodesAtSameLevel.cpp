@@ -1,5 +1,32 @@
 // Connect Nodes at Same Level
 
+// Question:
+// Given a binary tree, connect the nodes that are at same level. You'll be given an addition nextRight 
+// pointer for the same.
+
+// Initially, all the nextRight pointers point to garbage values. Your function should set these pointers 
+// to point next right for each node.
+//        10                       10 ------> NULL
+//       / \                       /      \
+//      3   5       =>     3 ------> 5 --------> NULL
+//     / \     \               /  \           \
+//    4   1   2          4 --> 1 -----> 2 -------> NULL
+
+// Input:
+//       10
+//     /   \
+//    20   30
+//   /  \
+//  40  60
+// Output:
+// 10 20 30 40 60
+// 40 20 60 10 30
+
+// Your Task:
+// You don't have to take input. Complete the function connect() that takes root as parameter and connects 
+// the nodes at same level. The printing is done by the driver code.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

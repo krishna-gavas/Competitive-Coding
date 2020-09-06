@@ -1,5 +1,37 @@
 // DFS of Graph
 
+// Question:
+// Given a connected undirected graph. Perform a Depth First Traversal of the graph.
+// Note: Use recursive approach.
+
+// Input:
+// The first line of the input contains an integer 'T' denoting the number of test cases. Then 'T' test cases 
+// follow. Each test case consists of two lines. Description of testcases is as follows: The First line of each 
+// test case contains two integers 'N' and 'E'  which denotes the no of vertices and no of edges respectively. 
+// The Second line of each test case contains 'E'  space separated pairs u and v denoting that there is a edge 
+// from u to v .
+
+// Output:
+// For each testcase, print the nodes while doing DFS starting from node 0.
+
+// Your task:
+// You don't need to read input or print anything. Your task is to complete the function dfs() which takes the Graph 
+// and the number of vertices as inputs and returns a list containing the DFS Traversal of the graph starting from 
+// the 0th node.
+
+// Example:
+// Input:
+// 2
+// 5 4
+// 0 1 0 2 0 3 2 4
+// 4 3
+// 0 1 1 2 0 3
+
+// Output:
+// 0 1 2 4 3   
+// 0 1 2 3
+
+// Solution:
 // dfs(g, N): Create a vector to store the result. Create a visited array and initialize it to false.
 //     call myDFS(g,N,0,res,vis) and return the result vector
 

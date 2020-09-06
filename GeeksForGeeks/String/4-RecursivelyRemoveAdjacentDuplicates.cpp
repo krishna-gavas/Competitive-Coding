@@ -1,4 +1,29 @@
 // Recursively remove all adjacent duplicates in a string
+
+// Question:
+// Given a string s, recursively remove adjacent duplicate characters from the string s. The output string should 
+// not have any adjacent duplicates.
+ 
+
+// Input:
+// The first line of input contains an integer T, denoting the no of test cases. Then T test cases follow. Each 
+// test case contains a string str.
+
+// Output:
+// For each test case, print a new line containing the resulting string.
+
+// Example:
+// Input:
+// 2
+// geeksforgeek
+// acaaabbbacdddd
+
+// Output:
+// gksforgk
+// acac
+
+
+// Solution:
 // In RemoveAdjacent function check if there is any duplicate string 
 // if no duplicate string is present return str2 else return RemoveAdjacent(str2)
 

@@ -1,5 +1,37 @@
 // Alien Dictionary
 
+// Question:
+// Given a sorted dictionary of an alien language having N words and k starting alphabets of standard dictionary. 
+// Find the order of characters in the alien language.
+// Note: Many orders may be possible for a particular test case, thus you may return any valid order.
+
+// Input:
+// The first line of input contains an integer T denoting the no of test cases. Then T test cases follow. Each test 
+// case contains an integer N and k denoting the size of the dictionary. Then in the next line are sorted space 
+// separated values of the alien dictionary.
+
+// Output:
+// For each test case in a new line output will be 1 if the order of string returned by the function is correct 
+// else 0 denoting incorrect string returned.
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function findOrder() which takes 
+// the string array dict[], its size N and the integer K as inputs and returns a string denoting the order of 
+// characters in the alien language.
+
+// Example:
+// Input:
+// 2
+// 5 4
+// baa abcd abca cab cad
+// 3 3
+// caa aaa aab
+
+// Output:
+// 1
+// 1
+
+// Solution:
 // findOrder(str[], N, K): Create a adjacency list and a visited array.
 //     Build Graph:
 //     for(i=0 to N):

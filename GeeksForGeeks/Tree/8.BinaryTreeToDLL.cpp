@@ -1,5 +1,26 @@
 // Binary Tree to DLL
 
+// Question:
+// Given a Binary Tree (BT), convert it to a Doubly Linked List(DLL) In-Place. The left and right pointers in 
+// nodes are to be used as previous and next pointers respectively in converted DLL. The order of nodes in DLL 
+// must be same as Inorder of the given Binary Tree. The first node of Inorder traversal (leftmost node in BT) 
+// must be the head node of the DLL.
+
+// Input:
+//        10
+//       /   \
+//      20   30
+//    /   \
+//   40   60
+// Output:
+// 40 20 60 10 30 
+// 30 10 60 20 40
+
+// Your Task:
+// You don't have to take input. Complete the function bToDLL() that takes root node of the tree as a parameter 
+// and returns the head of DLL . The driver code prints the DLL both ways.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.

@@ -1,5 +1,26 @@
 // Determine if Two Trees are Identical
 
+// Question:
+// Given two binary trees, the task is to find if both of them are identical or not. 
+
+// Input:
+//      1          1
+//    /   \      /   \
+//   2     3    2     3
+// Output: Yes
+
+// Input:
+//     1       1
+//   /  \     /  \
+//  2    3   3    2
+// Output: No
+
+// Your task:
+// Since this is a functional problem you don't have to worry about input, you just have to complete the 
+// function isIdentical() that takes two roots as parameters and returns true or false. The printing is 
+// done by the driver code.
+
+// Solution:
 // Accept a string s and call buildTree(s) function.
 // In buildTree() copy the string elements into a vector.
 //     build a queue and push root into it.
