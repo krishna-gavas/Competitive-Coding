@@ -41,9 +41,10 @@
 //     if(dist[u] + g[u][v] < dist[v]) then  dist[v] = dist[u] + g[u][v].
 //     return dist.
 
-// minDistance(dist, vis, V): for(v=0 to V)
-//     if (vis[v] == false && dist[v] <= min) then min = dist[v] and min_index = v
-//     return min_index.
+// minDistance(dist, vis, V): 
+//     for(v=0 to V):
+//         if (vis[v] == false && dist[v] <= min) then min = dist[v] and min_index = v
+//         return min_index.
 
 #include <iostream>
 #include <stack>
