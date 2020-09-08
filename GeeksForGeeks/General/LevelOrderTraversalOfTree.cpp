@@ -105,23 +105,22 @@ vector<int> levelOrder(Node* root)
     if(root==NULL)
         return res;
     int level = 0;
-    queue< pair<Node *, int > > nodeQueue;
-    nodeQueue.push(make_pair(root, level));
+    queue<Node *> nodeQueue;
+    nodeQueue.push(root);
     
     while (nodeQueue.empty() == false) 
     { 
         // Pop the top item from queue 
-        struct Node *node = nodeQueue.front().first; 
-        level = nodeQueue.front().second;
+        struct Node *node = nodeQueue.front(); 
         res.push_back(node->data);
         nodeQueue.pop(); 
   
         // Enqueue left child and right child
         if (node->left != NULL){
-            nodeQueue.push(make_pair(node->left, level+1));
+            nodeQueue.push(node->left);
         }
         if (node->right != NULL){
-            nodeQueue.push(make_pair(node->right, level+1)); 
+            nodeQueue.push(node->right); 
         }
     }
     return res;
