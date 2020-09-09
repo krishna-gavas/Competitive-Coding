@@ -49,7 +49,6 @@ int main() {
 	cin>>T;
 	while(T--){
 	    string str1;
-        string arr[120];
         
         vec.clear(); 
         cin>>str1;
