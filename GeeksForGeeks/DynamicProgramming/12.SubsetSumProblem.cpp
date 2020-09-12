@@ -1,5 +1,14 @@
 // Subset Sum Problem
 
+// SubsetSum: Create a DP table of size N+1 by sum+1
+//     for(i=0 to N+1)
+//         for(j=0 to sum+1)
+//             initialize first row with false and first column with true
+//             if(A[i-1] <= j) then DP[i][j] = (DP[i-1][j - A[i-1]]) || DP[i-1][j]
+//             else DP[i][j] = DP[i-1][j]
+//     return DP[N][sum]
+
+
 #include <iostream>
 #include <string>
 #include <algorithm>

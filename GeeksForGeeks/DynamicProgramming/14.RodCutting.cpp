@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 
-int RodCutting(int coin[],int sum, int N){
+int RodCutting(int sum,int x,int y,int z){
     int DP[N+1][sum+1];
     for(int i=0;i<=N;i++){
         for(int j=0;j<=sum;j++){
@@ -29,13 +29,11 @@ int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    int N,sum;
+	    int N;
         cin>>N;
-        int coin[N];
-        for(int i=0;i<N;i++)
-            cin>>coin[i];
-        cin>>sum;
-        cout<<RodCutting(coin,sum,N)<<"\n";
+        int x,y,z;
+        cin>>x>>y>>z;
+        cout<<RodCutting(N,x,y,z)<<"\n";
 	}
 	return 0;
 }
