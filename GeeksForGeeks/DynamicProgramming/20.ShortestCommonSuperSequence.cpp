@@ -1,4 +1,4 @@
-// Longest Common Subsequence
+// Shortest Common Supersequence
 
 // LCS:
 //     Create a DP table and initialize the length of longest substring(len) as 0
@@ -34,11 +34,15 @@ int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    int N,M;
-        cin>>N>>M;
+	    int n,m;
         string X,Y;
         cin>>X>>Y;
-        cout<<LCS(X,Y,N,M)<<"\n";
+        m = X.length();
+        n = Y.length();
+        int lenOfLCS = LCS(X,Y,m,n);
+
+        int lenOfSCS = (m + n) - lenOfLCS;
+        cout<<lenOfLCS<<"\n";
 	}
 	return 0;
 }
