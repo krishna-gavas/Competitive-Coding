@@ -29,38 +29,55 @@
 // 2
 // 1
 
+// Solution:
+// minSwaps: Create an array of pairs ArrIndex[] such that first value is A[i] and second value is i
+//     sort ArrIndex based on first value and create a visited array and initialize it with false
+//     initialize swaps = 0
+//     for(i=0 to 1):
+//         if(ith node is visited or ith node does not contain any edges) then continue
+//         initialize cycle with 0 and node with j
+//         while(node is not visited): mark node as visited
+//             update node value as ArrIndex[node].second and increment value of cycle
+//         if(cycle > 0) then swaps += (cycle - 1)
+//     return swaps
+
 #include <iostream>
-#include <queue>
 #include <vector>
-#include <map>
 #include <algorithm>
 using namespace std;
 
-void Swap(int A[],int i ,int t){
-	int z=0;
+int minSwaps(int A[], int n){
+    pair<int, int> ArrIndex[n]; 
+	for (int i = 0; i < n; i++) { 
+		ArrIndex[i].first = A[i]; 
+		ArrIndex[i].second = i; 
+	} 
 	
-    z=A[i];
-	A[i]=A[t];
-    A[t]=z;
-}
+	sort(ArrIndex, ArrIndex + n); // sort by first
+	
+	vector<bool> vis(n, false); 
 
-int minSwaps(int A[], int N){
-    int count = 0,min,begin=0,minIndex;
-    for(int i=begin;i<N-1;i++){
-        min = A[i];
-        minIndex = i;
-        for(int j=i+1;j<N;j++){
-            if(A[j] < min){
-                min = A[j];
-                minIndex = j;
-            }
-        }
-        if(i != minIndex){
-            Swap(A,i,minIndex);
-            count++;
-        }
-    }
-    return count;
+	int swaps = 0; 
+	for (int i = 0; i < n; i++) 
+	{ 
+		if (vis[i] || ArrIndex[i].second == i) 
+			continue; 
+ 
+		int cycle = 0; 
+		int node = i; 
+		while (!vis[node]) 
+		{ 
+			vis[node] = 1; 
+			node = ArrIndex[node].second; 
+			cycle++; 
+		} 
+      
+		if (cycle > 0) 
+		{ 
+			swaps += (cycle - 1); 
+		} 
+	} 
+	return swaps;
 }
 
 int main(){
