@@ -25,33 +25,19 @@
 // a -1 b b
 // a -1 c
 
+// Solution:
+// Create a vector q which acts like a queue but we can delete any in between elements from it
+// also create an array count[26] to store the count of characters and initialize it to 0
+// for(i=0 to n): input in[i]
+//     if(count[in[i]] is 0) then push in[i] to q and increment count[in[i]]
+//     else check whether in[i] is present in q if yes then delete it from q 
+//     if(q is not empty) then print front of q 
+//     else print -1
+
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-struct Node{
-    char data;
-    Node *next,*prev;
-    Node(int data)
-    {
-        this->data=data;
-        next=prev=NULL;
-    }
-};
-
-Node* Insert(struct Node** head, int newdata){
-    struct Node* newNode = new Node(newdata);    
-    if(*head == NULL)
-        *head = newNode;
-    else{
-        struct Node* temp = *head;
-        while(temp->next != NULL)
-            temp = temp->next;
-        temp->next = newNode;
-        newNode->prev = temp;
-        newNode->next = NULL;
-    }
-    return newNode;
-}
 
 int main() {
 	int T;
@@ -59,46 +45,29 @@ int main() {
 	while(T--){
 	    int n;
 	    cin>>n;
-	    char in[n], out[n];
-        Node* inDLL[256] = {NULL};
-        bool repeated[256] = {false};
-        Node *head = NULL;
+	    char in[n];
+	    vector<char> q;
+	    vector<char>::iterator it; 
+	    int count[26] = {0};
         for(int i=0;i<n;i++){
             cin>>in[i];
-            if(repeated[in[i]]){
-
+            if(count[in[i] - 'a'] == 0){
+                q.push_back(in[i]);
+                count[in[i] - 'a']++;
             }
             else{
-                if(inDLL[in[i]] == NULL){
-                    Node *newNode = Insert(&head, in[i]);
-                    inDLL[in[i]] = newNode;
-                }
-                else{
-                    Node *tempNode = inDLL[in[i]];
-                    if(head == inDLL[in[i]]){
-                        if(head->next == NULL)
-                            head = NULL;
-                        else{
-                            head = head->next;
-                            head->prev = NULL;
-                        }
-                    }
-                    else if(tempNode->next == NULL){
-                        tempNode->prev->next = NULL;
-                    }
-                    else{
-                        Node *prevNode = tempNode->prev, *nextNode = tempNode->next;
-                        prevNode->next = tempNode->next;
-                        nextNode->prev = tempNode->prev;
-                    }
-                    inDLL[in[i]] = NULL;
-                    repeated[in[i]] = true;
+                it = find(q.begin(), q.end(), in[i]);
+                if(it != q.end()){
+                    q.erase(it);
                 }
             }
-            if(head != NULL)
-                cout<<head->data<<" ";
+            if(!q.empty()){
+                it = q.begin();
+                cout<<*it<<" ";
+            }
             else 
                 cout<<-1<<" ";
+            
         }
         cout<<"\n";
 	}
