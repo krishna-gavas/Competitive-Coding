@@ -1,5 +1,21 @@
 // Stack using two queues
 
+// Question:
+// Implement a Stack using two queues q1 and q2.
+
+// Input:
+// push(2)
+// pop()
+// pop()
+// push(3)
+// Output: 2 -1
+
+// Your Task:
+// Since this is a function problem, you don't need to take inputs. You are required to complete the two methods push() 
+// which takes an integer 'x' as input denoting the element to be pushed into the stack and pop() which returns the 
+// integer poped out from the stack(-1 if the stack is empty).
+
+// Solution:
 // Create 2 queues q1 and q2.
 // push(x):
 //     while(q2 is not empty) pop q2.front() and push it to q1.

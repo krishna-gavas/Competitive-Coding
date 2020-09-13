@@ -91,16 +91,16 @@ int main(){
     while(t--){
         int V,E;
         cin>>V>>E;
-        vector<int> adj[V];
+        vector<int> g[V];
 
         for(int i=0;i<E;i++){
             int u,v;
             cin>>u>>v;
-            adj[u].push_back(v);
+            g[u].push_back(v);
         }
 
-        int *res = topoSort(V, adj);
-        cout<<check(V, res, adj)<<endl;
+        int *res = topoSort(V, g);
+        cout<<check(V, res, g)<<endl;
         
     }
     return 0;

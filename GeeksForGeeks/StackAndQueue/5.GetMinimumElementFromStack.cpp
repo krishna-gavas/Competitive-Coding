@@ -1,4 +1,23 @@
 // Get minimum element from stack
+
+// Question:
+// You are given N elements and your task is to Implement a Stack in which you can get minimum element in O(1) time.
+
+// Input:
+// push(2)
+// push(3)
+// pop()
+// getMin()
+// push(1)
+// getMin()
+// Output: 3 2 1
+
+// Your Task:
+// You are required to complete the three methods push() which take one argument an integer 'x' to be pushed into 
+// the stack, pop() which returns a integer poped out from the stack and getMin() which returns the min element from 
+// the stack. (-1 will be returned if for pop() and getMin() the stack is empty.)
+
+// Solution:
 // Push(x) : Inserts x at the top of stack.
 
 // If stack is empty, insert x into the stack and make minEle equal to x.

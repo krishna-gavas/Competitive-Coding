@@ -26,6 +26,11 @@
         "memory": "cpp",
         "list": "cpp",
         "__locale": "cpp",
-        "__string": "cpp"
+        "__string": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "initializer_list": "cpp",
+        "ios": "cpp"
     }
 }

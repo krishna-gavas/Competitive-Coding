@@ -1,12 +1,37 @@
 // Next larger element
-// 1) Push the first element to stack.
-// 2) Pick rest of the elements one by one and follow the following steps in loop.
-//  a) Mark the current element as next.
-//  b) If stack is not empty, then pop an element from stack and compare it with next.
-//  c) If next is greater than the popped element, then next is the next greater element for the popped element.
-//  d) Keep popping from the stack while the popped element is smaller than next.next becomes the next greater element for all such popped elements
-//  e) Finally, push the next in the stack.
-// 3) After the loop in step 2 is over, pop all the elements from stack and print -1 as next element for them.
+
+// Question:
+// Given an array A of size N having distinct elements, the task is to find the next greater element for each element 
+// of the array in order of their appearance in the array. If no such element exists, output -1 
+
+// Input:
+// The first line of input contains a single integer T denoting the number of test cases.Then T test cases follow. 
+// Each test case consists of two lines. The first line contains an integer N denoting the size of the array. The 
+// Second line of each test case contains N space separated positive integers denoting the values/elements in the array A.
+
+// Output:
+// For each test case, print in a new line, the next greater element for each array element separated by space in order.
+
+// Example:
+// Input
+// 2
+// 4
+// 1 3 2 4
+// 4
+// 4 3 2 1
+// Output
+// 3 4 4 -1
+// -1 -1 -1 -1
+
+// Solution:
+// nextLarger: Create a stack s and also create an array B[] to store next larger element.
+//     traverse the array from last to first:
+//         at each traversal initialize next = arr[i];
+//         while(stack is not empty and next > top of stack) then pop top most element
+//         if(stack is empty) then insert -1 to B[i]
+//         else insert top of stack to B[i]
+//         finally push next to stack
+//     print the contents of array B[]
 
 #include <iostream>
 #include <stack>
@@ -15,7 +40,7 @@ using namespace std;
 void nextLarger(long long arr[], int n){
     stack <long long int> s;
     long long  B[n];
-    long long int next,ele;
+    long long int next;
 
     for(int i=n-1;i>=0;i--){
         next = arr[i];

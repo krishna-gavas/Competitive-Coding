@@ -84,15 +84,15 @@ int main(){
     while(t--){
         int V,E;
         cin>>V>>E;
-        vector<int> adj[V];
+        vector<int> g[V];
 
         for(int i=0;i<E;i++){
             int u,v;
             cin>>u>>v;
-            adj[u].push_back(v);
+            g[u].push_back(v);
         }
 
-        cout<<isCyclic(V, adj)<<endl;
+        cout<<isCyclic(V, g)<<endl;
     }
     return 0;
 }
