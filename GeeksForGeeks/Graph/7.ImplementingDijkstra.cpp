@@ -87,8 +87,7 @@ vector<int> dijkstra(vector<vector<int> > g, int src, int V)
         vis[u] = true; 
   
         for (int v = 0; v < V; v++){
-            if (!vis[v] && g[u][v] && dist[u] != INT_MAX 
-                && dist[u] + g[u][v] < dist[v]) 
+            if (!vis[v] && g[u][v] && dist[u] != INT_MAX && dist[u] + g[u][v] < dist[v]) 
                 dist[v] = dist[u] + g[u][v]; 
         }
     } 
@@ -99,7 +98,7 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int V,s;
+        int V,src;
         cin>>V;
         vector<vector<int> > g(V);
         for(int i=0;i<V;i++){
@@ -112,8 +111,8 @@ int main(){
             }
         }
 
-        cin>>s;
-        vector<int> res = dijkstra(g, s, V);
+        cin>>src;
+        vector<int> res = dijkstra(g, src, V);
         printSolution(res, V);
         cout<<endl;    
     }
