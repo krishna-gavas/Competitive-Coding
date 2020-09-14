@@ -1,4 +1,6 @@
 // DFS of Graph
+// Time: O(N+E)
+// Space: O(N)
 
 // Question:
 // Given a connected undirected graph. Perform a Depth First Traversal of the graph.

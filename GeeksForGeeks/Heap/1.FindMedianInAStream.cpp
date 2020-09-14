@@ -1,5 +1,29 @@
 // Find median in a stream
 
+// Question:
+// Given an input stream of N integers. The task is to insert these numbers into a new stream and find the median of 
+// the stream formed by each insertion of X to the new stream.
+
+// Input:
+// The first line of input contains an integer N denoting the number of elements in the stream. Then the next N lines 
+// contains integer x denoting the number to be inserted into the stream.
+// Output:
+// For each element added to the stream print the floor of the new median in a new line.
+
+// Example:
+// Input:
+// 4
+// 5
+// 15
+// 1 
+// 3
+// Output:
+// 5
+// 10
+// 5
+// 4
+
+// Solution:
 // Create 2 heaps namely maxHeap for storing elements less than median and minHeap for elements greater than median
 // for i=0 to N input X 
 // if(i == 0) then med1 = X, print X as median and push X to maxHeap 

@@ -1,4 +1,6 @@
 // BFS of Graph
+// Time: O(N+E)
+// Space: O(N)
 
 // Question:
 // Given a directed graph. The task is to do Breadth First Search of this graph.

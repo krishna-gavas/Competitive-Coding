@@ -37,7 +37,8 @@
 // isCyclic(g, V): Create a result vector to store bfs traversal, Create a queue and push first element to it.
 //     create a flag array(-1 means not in queue, 0 means in queue and 1 means visited) of size V and initialize it to -1.
 //     initialize flag[first element] = 0;
-//     while(queue is not empty or all Nodes are not yet visited): pop front of q and store it to start, push start to result vector and make flag[start] = 1.
+//     while(queue is not empty or all Nodes are not yet visited): 
+//         pop front of q and store it to start, push start to result vector and make flag[start] = 1.
 //         for(it = g[start].begin() to g[start].end()): if(flag[*it] == 0) return true
 //             else if(flag[*it] == -1) then push *it to q and make flag[*it] = 0.
 //     return false;

@@ -27,44 +27,53 @@
 #include <deque>
 using namespace std;
 
+// void printKMax(int arr[], int n, int k) 
+// { 
+// 	std::deque<int> Qi(k); 
+// 	int i; 
+// 	for (i = 0; i < k; ++i) { 
+// 		while ((!Qi.empty()) && arr[i] >= arr[Qi.back()]) 
+// 			Qi.pop_back(); // Remove from rear 
+// 		Qi.push_back(i); 
+// 	} 
+// 	for (; i < n; ++i) { 
+// 		cout << arr[Qi.front()] << " "; 
+// 		while ((!Qi.empty()) && Qi.front() <= i - k) 
+// 			Qi.pop_front(); // Remove from front of queue 
+
+// 		while ((!Qi.empty()) && arr[i] >= arr[Qi.back()]) 
+// 			Qi.pop_back(); 
+// 		Qi.push_back(i); 
+// 	} 
+// 	cout << arr[Qi.front()]; 
+// }
+
 int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    int N,K,max=0,j=0;
+	    int N,K;
         cin>>N>>K;
-        int A[N],B[N-K+1];
-        deque <int> dq;
+        int A[N];
         deque <int> pos;
-        for(int i=0;i<N;i++){
+        for(int i=0;i<N;i++)
             cin>>A[i];
-            if(A[i] > max){
-                dq.clear();
-                pos.clear();
-                dq.push_back(A[i]);
-                pos.push_back(i);
-            }
-            else{
-                while(dq.back() < A[i]){
-                    dq.pop_back();
-                    pos.pop_back();
-                }
-                dq.push_back(A[i]);
-                pos.push_back(i);
-                if(pos.front() <= i-K){
-                    dq.pop_front();
-                    pos.pop_front();
-                }
-            }
-            max = dq.front();
-            cout<<max<<endl;
-            if(i >= K-1)
-                B[j++] = max;
+        for(int i=0;i<K;i++){
+            while ((!pos.empty()) && A[i] >= A[pos.back()]) 
+                pos.pop_back(); // Remove from rear 
+            pos.push_back(i); 
         }
+        for(int i=K;i<N;i++){
+            cout<<A[pos.front()]<<" ";
 
-        for(int i=0;i<N-K+1;i++)
-            cout<<B[i]<<" ";
-        cout<<"\n";
+            while ((!pos.empty()) && pos.front() <= i - K) 
+                pos.pop_front(); // Remove from front of queue 
+
+            while ((!pos.empty()) && A[i] >= A[pos.back()]) 
+                pos.pop_back(); 
+            pos.push_back(i); 
+        }
+        cout<<A[pos.front()]<<"\n";
 	}
 	return 0;
 }
