@@ -58,6 +58,18 @@ using namespace std;
 
 string order;
 
+bool f(string a, string b){
+    int p1=0,p2=0;
+    for(int i=0;i < min(a.size(), b.size()) && p1 == p2;i++){
+        p1 = order.find(a[i]);
+        p2 = order.find(b[i]);
+    }
+    if(p1 == p2 && a.size() != b.size())
+        return a.size() < b.size();
+
+    return p1 < p2;
+}
+
 string findOrder(string str[], int N, int K) {
     vector<int> adj[K];
     int vis[K];
@@ -111,50 +123,6 @@ string findOrder(string str[], int N, int K) {
     }
     return res;
     
-    cout<<res<<endl;
-    return res;
-}
-
-int* topoSort(int V, vector<int> g[])
-{
-    int *res = new int[V];
-    vector<int> :: iterator it;
-    queue<int> q;
-    int indegree[V],count=0,start,k=0;
-    for (int i = 0; i < V; i++)
-        indegree[i] = 0;
-    for (int i = 0; i < V; i++)
-        for(it = g[i].begin(); it != g[i].end(); it++)
-            indegree[*it]++;
-
-    for (int i = 0; i < V; i++)
-        if(indegree[i] == 0)
-            q.push(i);
-
-    while(!q.empty()){
-        start = q.front();
-        q.pop();
-        res[k++] = start;
-        for(it = g[start].begin(); it != g[start].end(); it++){
-            indegree[*it]--;
-            if(indegree[*it] == 0)
-                q.push(*it);
-        }
-        count++;
-    }
-    return res;
-}
-
-bool f(string a, string b){
-    int p1=0,p2=0;
-    for(int i=0;i < min(a.size(), b.size()) && p1 == p2;i++){
-        p1 = order.find(a[i]);
-        p2 = order.find(b[i]);
-    }
-    if(p1 == p2 && a.size() != b.size())
-        return a.size() < b.size();
-
-    return p1 < p2;
 }
 
 int main(){

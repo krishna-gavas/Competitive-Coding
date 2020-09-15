@@ -24,6 +24,13 @@
 // 0 1 2 3 5 6 7 8 9
 // 5 10 12 18 20
 
+// Solution:
+// Create a varaiable called gap whose initial value is (X+Y+1)/2
+// while(gap >= 1):
+// 	for(i=0;i+gap<X+Y;i++): 
+// 		if(A[i+gap] < A[i]) swap(A[i],A[i+gap])
+// 	update gap = (gap+1)/2
+
 #include <iostream>
 using namespace std;
 
@@ -40,13 +47,12 @@ int main(){
 	    long int X,Y;
 	    cin>>X>>Y;
 	    long int A[X+Y];
+		int gap = nextGap(X+Y);
 
 	    for(int i=0;i<X+Y;i++)
 	        cin>>A[i];
 
-		int gap = nextGap(X+Y);
-
-		while(gap){
+		while(gap >= 1){
 			for(int i=0;i+gap<X+Y;i++){
 				if(A[i+gap] < A[i])
 					swap(A[i],A[i+gap]);
@@ -55,8 +61,7 @@ int main(){
 		}
 
 		for(int i=0;i<X+Y;i++)
-	        cout<<A[i]<<" ";
-		
+	        cout<<A[i]<<" ";		
 		cout<<endl;
 	}
 	return 0;

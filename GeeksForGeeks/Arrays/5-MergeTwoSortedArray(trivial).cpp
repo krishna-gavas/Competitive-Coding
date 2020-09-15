@@ -1,9 +1,19 @@
 //Merge Two sorted array without extra space(Trivial approach)
 
-X is size of array P and Y is size of array Q
-for(i=0 to X):
-	for(j=0 to Y):
-		
+// Question:
+// Given two sorted arrays Arr1[] and Arr2[] in non-decreasing order with size N and M. The task is to merge the 
+// two sorted arrays into one sorted array (in non-decreasing order).
+// Note:  DO NOT use extra space. We need to modify existing arrays as following.
+
+// Input:
+// N = 4, M = 5
+// Arr1[] = {1, 3, 5, 7}
+// Arr2[] = {0, 2, 6, 8, 9}
+// Output: 0 1 2 3 5 6 7 8 9	
+
+// Your Task:
+// Complete the function merge() which takes two arrays arr1, arr2 and two integer n, m, as input parameters and 
+// returns void. You don't to print answer or take inputs.
 
 #include <iostream>
 using namespace std;

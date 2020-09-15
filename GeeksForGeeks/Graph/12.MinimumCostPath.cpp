@@ -41,6 +41,7 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <climits>
 #include <algorithm>
 using namespace std;
 
@@ -72,7 +73,7 @@ int main(){
             for(int i=0;i<4;i++){
                 k = vali+x[i];
                 l = valj+y[i];
-                if( k>=0 && k<N && l>=0 && l<N &&  dis[k][l]>(dis[vali][valj]+A[k][l])){
+                if( k>=0 && k<N && l>=0 && l<N && (dis[vali][valj]+A[k][l]) < dis[k][l]){
                     dis[k][l]=dis[vali][valj]+A[k][l];
                     q.push(make_pair(k,l));    
                 }   
