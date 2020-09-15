@@ -31,6 +31,12 @@
         "__hash_table": "cpp",
         "__tree": "cpp",
         "initializer_list": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "functional": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp",
+        "*.tcc": "cpp"
     }
 }

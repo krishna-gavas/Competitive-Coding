@@ -1,5 +1,15 @@
 // Number of pairs
 
+// Question:
+// Given two arrays X[] and Y[] of size M and N respectively. Find number of pairs such that xy > yx where x is an 
+// element from X[] and y is an element from Y[].
+
+// Input:
+// M = 3, N = 2
+// X[] = {2, 1, 6}, Y = {1, 5}
+// Output: 3
+
+// Solution:
 // Create a frequency array which stores count from 0 to 4 , sort array Y and initialize count to 0.
 // for(i=0 to M): count = count + Solve(X[i],Y,freq,M,N)
 // print count.
