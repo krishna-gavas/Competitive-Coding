@@ -14,7 +14,7 @@
 // Output: 40 20 60 10 30
 
 // Your Task:
-// The task is to complete two function serialize which takes the root node of the tree as input andstores the 
+// The task is to complete two function serialize which takes the root node of the tree as input and stores the 
 // tree into an array and deSerialize which deserializes the array to the original tree and returns the root of it.
 
 // Solution:

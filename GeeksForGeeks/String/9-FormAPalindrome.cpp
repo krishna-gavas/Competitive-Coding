@@ -1,4 +1,4 @@
-// Form a palindrome(not submitted)
+// Form a palindrome
 
 // Question:
 // Given a string, find the minimum number of characters to be inserted to convert it to palindrome.

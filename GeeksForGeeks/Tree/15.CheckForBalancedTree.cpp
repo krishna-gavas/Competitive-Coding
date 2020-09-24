@@ -128,32 +128,21 @@ int main() {
 int height(struct Node* root){
     if(root==NULL)
         return 0;
-    int leftHeight = height(root->left);
-    if(leftHeight == -1)
+    int LH = height(root->left);
+    int RH = height(root->right);
+    if(LH == -1 || RH == -1)
         return -1;
-    int rightHeight = height(root->right);
-    if(rightHeight == -1)
+    if(abs(LH - RH) > 1)
         return -1;
-
-    if(abs(leftHeight - rightHeight) > 1)
-        return -1;
-    int ret =  max(leftHeight,rightHeight);
-    return ret+1;
+    return 1+max(LH,RH);
 }
 
 bool isBalanced(Node *root){
     if(root==NULL)
         return true;
 
-    int leftHeight = height(root->left);
-    if(leftHeight == -1)
-        return false;
-
-    int rightHeight = height(root->right);
-    if(rightHeight == -1)
-        return false;
-
-    if(abs(leftHeight - rightHeight) > 1)
+    int ans = height(root);
+    if(ans == -1)
         return false;
     else 
         return true;

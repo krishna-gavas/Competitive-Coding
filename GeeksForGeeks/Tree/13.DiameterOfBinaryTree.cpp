@@ -28,12 +28,15 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call diameter(root) function: initialize height = 0 and call ret = diameterOpt(root, &height) and return ret.
-// diameterOpt(root, &height): initialize lh,rl,ldiameter and rdiameter to 0.
-//     if (root == NULL) then *height = 0 and return 0;
-//     Get the heights of left and right subtrees in lh and rh and store the returned values in ldiameter and ldiameter
-//     calculate height as *height = max(lh, rh) + 1.
-//     finally return max(lh + rh + 1, max(ldiameter, rdiameter))
+// diameter(root): 
+//     initialize height = 0 and call ret = findDiameter(root, &height) and return height.
+// findDiameter(root, &height): 
+//     if (root == NULL) then return 0;
+//     Get the heights of left and right subtrees in lh and rh respectively
+//     calculate temp as max(LH,RH) + 1 (which is the height upto that node)
+//     calculate ans as max(temp,LH+RH+1) (i.e. max of height upto that node and diameter upto that node)
+//     if(ans > height) then height = ans
+//     return temp
 
 #include <iostream>
 #include <string>
@@ -125,37 +128,23 @@ int main() {
    return 0;
 }
 
-int diameterOpt(Node *root, int *height){
-    /* lh --> Height of left subtree 
-     rh --> Height of right subtree */
-  int lh = 0, rh = 0; 
-   
-  /* ldiameter  --> diameter of left subtree 
-     rdiameter  --> Diameter of right subtree */
-  int ldiameter = 0, rdiameter = 0; 
-   
-  if (root == NULL) 
-  { 
-    *height = 0; 
-     return 0; /* diameter is also 0 */
-  } 
-   
-  /* Get the heights of left and right subtrees in lh and rh 
-    And store the returned values in ldiameter and ldiameter */
-  ldiameter = diameterOpt(root->left, &lh); 
-  rdiameter = diameterOpt(root->right, &rh); 
-   
-  /* Height of current node is max of heights of left and 
-     right subtrees plus 1*/
-  *height = max(lh, rh) + 1; 
-   
-  return max(lh + rh + 1, max(ldiameter, rdiameter));
+int findDiameter(Node *root, int &height){
+    if (root == NULL) 
+        return 0;
+    
+    int LH = findDiameter(root->left,height);
+    int RH = findDiameter(root->right,height);
+
+    int temp = max(LH,RH) + 1;
+    int ans = max(temp,LH+RH+1);
+    height = max(height,ans);
+    return temp;
 }
 
 int diameter(Node *root){
     if(root == NULL)
         return 0;
     int height = 0;
-    int ret = diameterOpt(root, &height);
-    return ret;
+    findDiameter(root,height);
+    return height;
 }

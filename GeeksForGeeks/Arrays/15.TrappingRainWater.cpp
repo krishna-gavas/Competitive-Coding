@@ -24,6 +24,25 @@
 // 10
 // 0
 
+// Solution:
+// Create 2 arrays namely left and right to store the left and right maximum for every element
+// initialize water,lmax and rmax to 0 
+// for(i=1 to n-2): (to calculate left maximum)
+//     if(arr[i-1] > lmax) then lmax = arr[i-1]
+//     left[i] = lmax
+// for(i=n-2 to 1): (to calculate right maximum)
+//     if(arr[i+1] > rmax) then rmax = arr[i+1]
+//     right[i] = rmax
+// for(i=1 to n-2): minlr = min(left[i],right[i])
+//     if(minlr >= arr[i]) then water = water + (minlr - arr[i])
+
+
+
+for(int i=1;i<N-1;i++){
+            minlr = min(left[i],right[i]);
+            if(minlr >= arr[i])
+                water = water + (minlr - arr[i]);
+        }
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -52,11 +71,11 @@ int main() {
             right[i] = rmax;
         }
 
+        int minlr;
         for(int i=1;i<N-1;i++){
-            if((left[i] <= right[i]) && (left[i] >= arr[i]))
-                water = water + (left[i] - arr[i]);
-            else if((left[i] > right[i]) && (right[i] >= arr[i]))
-                water = water + (right[i] - arr[i]);
+            minlr = min(left[i],right[i]);
+            if(minlr >= arr[i])
+                water = water + (minlr - arr[i]);
         }
         
 		cout<<water<<endl;

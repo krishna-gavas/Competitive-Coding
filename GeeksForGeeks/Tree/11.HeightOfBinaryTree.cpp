@@ -121,18 +121,11 @@ int main() {
    return 0;
 }
 
-int maximum(int a, int b){
-    if(a > b)
-        return a;
-    else 
-        return b;
-}
-
 int height(struct Node* root){
     if(root==NULL)
         return 0;
     int leftHeight = height(root->left);
     int rightHeight = height(root->right);
-    int ret =  maximum(leftHeight,rightHeight);
+    int ret =  max(leftHeight,rightHeight);
     return ret+1;
 }
