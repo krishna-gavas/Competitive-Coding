@@ -35,13 +35,15 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call isSymmetric(root) function: initialize count = 0, create 2 queues q1 and q2 and push root into both queues.
-//     for each traversal increment count pop front items as follows node1 = q1.front() and node2 = q2.front() and if node1->data != node2->data return false
-//     if (node1->left != NULL && node1->right != NULL) then q1.push(node1->left) and q1.push(node1->right)
-//     else if((!node1->left && node2->right) || (node1->left && !node2->right)) then return false.
-//     similarly perform above 2 lines for  node2
-//     finally if both queues are empty and (count+1) is even then return true else return false
 
+// isSymmetric(): if(root == NULL) return true 
+//     return check(root->left,root->right)
+
+// check(leftSub,rightSub): if(both leftSub and rightSub are NULL) return true 
+//     if(both leftSub and rightSub are not NULL)
+//         if(leftSub->data == rightSub->data && check(leftSub->left,rightSub->right) &&
+//             check(leftSub->right,rightSub->left)) then return true 
+//     return false;
 
 #include <iostream>
 #include <string>
@@ -136,40 +138,18 @@ int main() {
    return 0;
 }
 
+bool check(struct Node* leftSub, struct Node* rightSub){
+    if(leftSub == NULL && rightSub == NULL)
+        return true;
+    if(leftSub != NULL && rightSub != NULL){
+        if(leftSub->data == rightSub->data && check(leftSub->left,rightSub->right) && check(leftSub->right,rightSub->left))
+            return true;
+    }
+    return false;
+}
+
 bool isSymmetric(struct Node* root){
     if(root==NULL)
         return true;
-    int count = 0;
-    queue<Node *> q1; 
-    queue<Node *> q2;
-    q1.push(root); 
-    q2.push(root);
-    while (q1.empty() == false) 
-    { 
-        count++;
-        Node *node1 = q1.front(); 
-        Node *node2 = q2.front();
-        if(node1->data != node2->data)
-            return false; 
-        q1.pop(); 
-        q2.pop();
-  
-        if (node1->left != NULL && node1->right != NULL){
-            q1.push(node1->left);
-            q1.push(node1->right);
-        }
-        else if((!node1->left && node2->right) || (node1->left && !node2->right))
-            return false;
-
-        if (node2->right != NULL && node2->left != NULL){
-            q2.push(node2->right);
-            q2.push(node2->left);
-        }
-        else if((!node1->left && node2->right) || (node1->left && !node2->right))
-            return false;
-    }
-    if(q1.empty() && q2.empty() && (count+1)%2 == 0)
-        return true;
-    else 
-        return false;
+    return check(root->left,root->right);
 }
