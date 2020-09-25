@@ -142,12 +142,10 @@ bool isIdentical(Node *r1, Node *r2){
         // Print front of queue and remove it from queue 
         Node *node1 = q1.front(); 
         Node *node2 = q2.front();
-  
-        if(node1->data != node2->data)
-            return false;
-
         q1.pop(); 
         q2.pop();
+        if(node1->data != node2->data)
+            return false;
 
         if(node1->left != NULL && node2->left != NULL){
             q1.push(node1->left);

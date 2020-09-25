@@ -104,7 +104,6 @@ vector<int> levelOrder(Node* root)
     vector<int> res;
     if(root==NULL)
         return res;
-    int level = 0;
     queue<Node *> nodeQueue;
     nodeQueue.push(root);
     

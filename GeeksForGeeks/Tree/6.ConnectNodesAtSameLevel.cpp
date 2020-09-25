@@ -118,7 +118,6 @@ Node* buildTree(string str)
        }
        i++;
    }
-
    return root;
 }
 
@@ -174,36 +173,26 @@ void connect(Node *root){
         return; 
   
     int level = 0,oldlevel;
-    // Create an empty queue for level order tarversal 
     queue<pair<Node *, int> > nodeQueue;
   
-    // Enqueue Root and initialize height 
     nodeQueue.push(make_pair(root,level)); 
     root->nextRight = NULL;
   
     while (nodeQueue.empty() == false){ 
-
         level = nodeQueue.front().second;
         oldlevel = level;
-
-        // Print front of queue and remove it from queue 
         Node *node = nodeQueue.front().first; 
-        // cout << node->data << " "; 
         nodeQueue.pop(); 
-        if(node == root){
+
+        if(node == root)
             node->nextRight = NULL;
-        }
         else if( !nodeQueue.empty() && nodeQueue.front().second == level)
             node->nextRight = nodeQueue.front().first;
         else
             node->nextRight = NULL;
             
-  
-        /* Enqueue left child */
         if (node->left) 
             nodeQueue.push(make_pair(node->left,level+1)); 
-  
-        /*Enqueue right child */
         if (node->right) 
             nodeQueue.push(make_pair(node->right,level+1));  
     }

@@ -15,6 +15,18 @@
 // in the problem statement and returns the head of the modified linked list. 
 // The printing is done automatically by the driver code.
 
+// Solution:
+// segregate(head): Create a temp node and point it to head 
+//     create 3 dummy head nodes with value 0, also create 3 tail nodes and point them to respective head nodes 
+//     while temp is not NULL:
+//         if(temp->data == 0) then point tail0 to temp, increment tail0 and temp and make tail0->next = NULL
+//         else if(temp->data == 1) then point tail1 to temp, increment tail1 and temp and make tail1->next = NULL
+//         else if(temp->data == 2) then point tail2 to temp, increment tail2 and temp and make tail2->next = NULL
+//     if(head1 exist) then point tail0 to head1->next(since head1 was dummy) else point it to head2->next
+//     if(head2 exist) then point tail1 to head2->next
+//     finally increment head0 and return head0
+
+
 #include <iostream>
 using namespace std;
 
@@ -67,41 +79,39 @@ void InsertNode(struct Node** head, int newdata, struct Node** tail){
 struct Node* segregate(Node *head)
 {
     struct Node *temp = head;
-    struct Node *head1 = NULL, *head2 = NULL, *head3 = NULL;
-    struct Node *tail1 = NULL, *tail2 = NULL, *tail3 = NULL;
-    int flag1 = 0, flag2 = 0, flag3 = 0;
+    struct Node *head0 = new Node(0), *head1 = new Node(0), *head2 = new Node(0);
+    struct Node *tail0 = head0, *tail1 = head1, *tail2 = head2;
     while(temp != NULL){
         if(temp->data == 0){
-            InsertNode(&head1,0,&tail1);
-            flag1++;
+            tail0->next = temp;
+            tail0 = tail0->next;
+            temp = temp->next;
+            tail0->next = NULL;
         }
         else if(temp->data == 1){
-            InsertNode(&head2,1,&tail2);
-            flag2++;
+            tail1->next = temp;
+            tail1 = tail1->next;
+            temp = temp->next;
+            tail1->next = NULL;
         }
         else if(temp->data == 2){
-            InsertNode(&head3,2,&tail3);
-            flag3++;
+            tail2->next = temp;
+            tail2 = tail2->next;
+            temp = temp->next;
+            tail2->next = NULL;
         }
-        temp = temp->next;
     }
-    if(flag1 == 0){
-        if(flag2 == 0){
-            if(flag3 == 0)
-                head1 = NULL;
-            else 
-                head1 = head3;
-        }
-        else {
-            
-        }
+    if(head1->next != NULL)
+        tail0->next = head1->next;
+    else 
+        tail0->next = head2->next;
+    
+    if(head2->next != NULL)
+        tail1->next = head2->next;
+    
+    head0 = head0->next;
 
-    }
-    tail1->next = head2;
-    tail2->next = head3;
-    tail3->next = NULL;
-
-    return head1;
+    return head0;
 }
 
 

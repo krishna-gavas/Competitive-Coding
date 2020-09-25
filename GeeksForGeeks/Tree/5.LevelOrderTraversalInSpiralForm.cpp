@@ -129,7 +129,7 @@ void printSpiral(Node *root){
     if(root==NULL)
         return;
 
-    int level = 0,oldlevel;
+    int level = 0,oldlevel=0;
     deque<pair<Node *, int> > nodeQueue; 
     nodeQueue.push_back(make_pair(root,level));
 

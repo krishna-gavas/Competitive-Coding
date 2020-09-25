@@ -30,12 +30,15 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call bToDLL(root, &head) function to make a linkedList of a Binary tree with left as prev and right as next:
-//    Create an empty stack S and Initialize curr = root.
-//    Push the curr to S and set curr = curr->left until curr is NULL.
-//    step: If current is NULL and stack is not empty then Pop the top item from stack, curr = S.top() and set prev->right = curr and curr->left = prev.
-//    set prev = curr and curr = curr->right and then go to step
-// call printList(head) which prints linked list in forward and reverse direction
+
+// bToDLL(root, **head): if(root == NULL) return
+//     create a stack of type node and initialize cur to root and prev to NULL 
+//     while(curr is not null or stack is not empty)
+//         push curr to stack and move left till curr is NULL
+//         store top of stack to curr and pop top of stack 
+//         if(prev == NULL) then *head_ref = curr
+//         else make prev->right = curr and curr->left = prev
+//         make prev = curr and curr = curr->right
 
 
 #include <iostream>
@@ -109,7 +112,6 @@ Node* buildTree(string str)
        }
        i++;
    }
-
    return root;
 }
 
@@ -160,41 +162,23 @@ void bToDLL(Node *root, Node **head_ref){
         return;
 
     stack<Node *> s; 
-    Node *curr = root, *prev; 
-    int flag = 0;
-  
-    while (curr != NULL || s.empty() == false) 
-    { 
-        /* Reach the left most Node of the 
-           curr Node */
-        while (curr !=  NULL) 
-        { 
-            /* place pointer to a tree node on 
-               the stack before traversing 
-              the node's left subtree */
+    Node *curr = root, *prev = NULL; 
+    while (curr != NULL || !s.empty()){ 
+        while (curr !=  NULL){ 
             s.push(curr); 
             curr = curr->left; 
         } 
-  
         /* Current must be NULL at this point */
         curr = s.top(); 
+        cout<<"Cur= "<<curr->data<<endl;
         s.pop(); 
-        if(flag == 0){
+        if(prev == NULL)
             *head_ref = curr;
-            flag = 1;
-        }
         else{
             prev->right = curr;
             curr->left = prev;
         }
-  
-        // cout << curr->data << " "; 
-  
-        /* we have visited the node and its 
-           left subtree.  Now, it's right 
-           subtree's turn */
         prev = curr;
-        curr = curr->right; 
-  
+        curr = curr->right;  
     }
 }

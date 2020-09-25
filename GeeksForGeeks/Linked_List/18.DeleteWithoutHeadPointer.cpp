@@ -15,6 +15,10 @@
 // You only need to complete the function deleteNode that takes reference to the node that needs to be deleted. 
 // The printing is done automatically by the driver code.
 
+// Solution:
+// deleteNode(del): copy the contest of del->next to del and point del to del->next till last node 
+//     finally make last node NULL
+
 #include <iostream>
 using namespace std;
 

@@ -23,68 +23,49 @@ struct Node {
     }
 };
 
-// Function to Build Tree
 Node* buildTree(string str)
-{   
-    // Corner Case
-    if(str.length() == 0 || str[0] == 'N')
-            return NULL;
-    
-    // Creating vector of strings from input 
-    // string after spliting by space
-    vector<string> ip;
-    
-    istringstream iss(str);
-    for(string str; iss >> str; )
-        ip.push_back(str);
-        
-    // Create the root of the tree
-    Node* root = new Node(stoi(ip[0]));
-        
-    // Push the root to the queue
-    queue<Node*> queue;
-    queue.push(root);
-        
-    // Starting from the second element
-    int i = 1;
-    while(!queue.empty() && i < ip.size()) {
-            
-        // Get and remove the front of the queue
-        Node* currNode = queue.front();
-        queue.pop();
-            
-        // Get the current node's value from the string
-        string currVal = ip[i];
-            
-        // If the left child is not null
-        if(currVal != "N") {
-                
-            // Create the left child for the current node
-            currNode->left = new Node(stoi(currVal));
-                
-            // Push it to the queue
-            queue.push(currNode->left);
-        }
-            
-        // For the right child
-        i++;
-        if(i >= ip.size())
-            break;
-        currVal = ip[i];
-            
-        // If the right child is not null
-        if(currVal != "N") {
-                
-            // Create the right child for the current node
-            currNode->right = new Node(stoi(currVal));
-                
-            // Push it to the queue
-            queue.push(currNode->right);
-        }
-        i++;
-    }
-    
-    return root;
+{
+   if(str.length() == 0 || str[0] == 'N')
+       return NULL;
+
+   vector<string> ip;
+
+   istringstream iss(str);
+   for(string str; iss >> str; )
+       ip.push_back(str);
+
+   Node* root = new Node(stoi(ip[0]));
+
+   queue<Node*> queue;
+   queue.push(root);
+
+   int i = 1;
+   while(!queue.empty() && i < ip.size()) {
+
+       Node* currNode = queue.front();
+       queue.pop();
+
+       string currVal = ip[i];
+
+       if(currVal != "N") {
+
+           currNode->left = new Node(stoi(currVal));
+           queue.push(currNode->left);
+       }
+       i++;
+       if(i >= ip.size())
+           break;
+       currVal = ip[i];
+
+       if(currVal != "N") {
+
+           currNode->right = new Node(stoi(currVal));
+           queue.push(currNode->right);
+       }
+       i++;
+   }
+
+   return root;
 }
 
 vector <int> zigZagTraversal(Node* root);
@@ -104,26 +85,7 @@ int main()
   }
   return 0;
 }
-// Contributed by: Hashit Sidhwa
 
-// } Driver Code Ends
-
-
-//User function Template for C++
-/*Structure of the node of the binary tree is as
-struct Node {
-    int data;
-    Node *left;
-    Node *right;
-
-    Node(int val) {
-        data = val;
-        left = right = NULL;
-    }
-};
-*/
-
-// return a vector containing the zig zag level order traversal of the given tree
 vector <int> zigZagTraversal(Node* root)
 {
     vector<int> out;
@@ -133,8 +95,7 @@ vector <int> zigZagTraversal(Node* root)
     deque<pair<Node *, int> > nodeQueue; 
     nodeQueue.push_back(make_pair(root,level));
 
-    while (nodeQueue.empty() == false) 
-    { 
+    while (!nodeQueue.empty()){ 
         if(oldlevel%2 == 0)
             level = nodeQueue.front().second;
         else 
@@ -144,7 +105,6 @@ vector <int> zigZagTraversal(Node* root)
         struct Node *node;
         if(level % 2 == 0){
             node = nodeQueue.front().first; 
-            // cout<<node->data<<" ";
             out.push_back(node->data);
             nodeQueue.pop_front(); 
             if (node->left != NULL)
@@ -153,8 +113,7 @@ vector <int> zigZagTraversal(Node* root)
                 nodeQueue.push_back(make_pair(node->right,level+1)); 
         }
         else{
-            node = nodeQueue.back().first; 
-            // cout<<node->data<<" ";
+            node = nodeQueue.back().first;
             out.push_back(node->data);
             nodeQueue.pop_back();
             if (node->right != NULL)
