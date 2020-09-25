@@ -13,21 +13,6 @@
 
 // Output: 16
 
-// Input :    
-//             -15                               
-//          /      \                          
-//         5         6                      
-//       /  \       / \
-//     -8    1     3   9
-//    /  \              \
-//   2   -3              0
-//                      / \
-//                     4  -1
-//                        /
-//                      10  
-
-// Output :  27
-
 // Your Task:  
 // You dont need to read input or print anything. Complete the function maxPathSum() which takes root node as 
 // input parameter and returns the maximum sum between 2 leaf nodes.
@@ -42,17 +27,20 @@
 //     check if(currVal != "N") and then make currNode->left as currVal and push it to queue and increment i.
 //     make currVal = ip[i], check if(currVal != "N") and then make currNode->right as currVal and push it to queue and increment i.
 //     finally return root.
-// call maxPathSum(root) function: call pathSum(root) function and return second value of the pair returned by pathSum(root) function.
-// pathSum(root) function: this function returns a pair<root_to_leaf_path_sum, leaf_to_leaf_path_sum>
-//     if root is NULL return <0,0>
-//     if left and right child of root are NULL then return <root->data, INT_MIN>
-//     if left child is NULL and ltolPath for right child is INT_MIN return <root->data + pathSum(root->right).first, INT_MIN> 
-//     if right child is NULL nd ltolPath for left child is INT_MIN return <root->data + pathSum(root->left).first, INT_MIN>
-//     lsum1 and lsum2 are rtplPath and ltolPath for left child similarly rsum1 and rsum2 for right child
-//     if(lsum1 > rsum1) then sum1 = lsum1 + root->data else sum1 = rsum1 + root->data
-//      if(lsum2 > rsum2){ if(lsum1+rsum1+root->data > lsum2) then sum2 = lsum1+rsum1+root->data else sum2 = lsum2 }
-//      else{ if(lsum1+rsum1+root->data > rsum2) then sum2 = lsum1+rsum1+root->data  else sum2 = rsum2 }
-//      finally return <sum1, sum2>
+
+// maxPathSum(): if(root == NULL) return 0
+//     initialize path to INT_MIN and call maxPathSumLtoL(root,path)
+//     return path
+
+// maxPathSumLtoL: if(root == NULL) return 0
+//     if it is a leaf node then return its value 
+//     Lpath = maxPathSumLtoL(root->left, path) and Rpath = maxPathSumLtoL(root->right, path)
+//     store maxpath from single leaf node to current node in temp variable 
+//     if(current node has both left and right children) then 
+//         path = max(path, Lpath + Rpath + root->data) and return temp 
+//     if current node doesn't has right child then return root->data + Lpath
+//     else return root->data + Rpath
+
 
 #include <iostream>
 #include <string>
@@ -137,56 +125,31 @@ int main() {
    return 0;
 }
 
-pair<int, int>  pathSum(Node *root){
-    if(root == NULL)
-        return make_pair(0,0);
-
+int maxPathSumLtoL(struct Node* root, int &path){
+    if(root==NULL)
+        return 0;
     if(root->left == NULL && root->right == NULL)
-        return make_pair(root->data, INT_MIN);
+        return root->data;
+    int Lpath = maxPathSumLtoL(root->left, path);
+    int Rpath = maxPathSumLtoL(root->right, path);
 
-    if(root->left == NULL && pathSum(root->right).second == INT_MIN) 
-        return make_pair(root->data + pathSum(root->right).first, INT_MIN);
-    if(root->right == NULL && pathSum(root->left).second == INT_MIN)
-        return make_pair(root->data + pathSum(root->left).first, INT_MIN);
+    int temp = max(Lpath,Rpath) + root->data;
 
-    pair<int, int> lsum = pathSum(root->left);
-    pair<int, int> rsum = pathSum(root->right);
-    int lsum1 = lsum.first;
-    int rsum1 = rsum.first;
-    int lsum2 = lsum.second;
-    int rsum2 = rsum.second;
-
-    // cout<<root->data<<" ";
-    int sum1,sum2;
-    if(lsum1 > rsum1){
-            sum1 = lsum1 + root->data ;
+    if(root->left != NULL && root->right != NULL){
+        path = max(path, Lpath + Rpath + root->data);
+        return temp;
     }
-    else{
-            sum1 = rsum1 + root->data ;
-    }
-
-    if(lsum2 > rsum2){
-        if(lsum1+rsum1+root->data > lsum2)
-            sum2 = lsum1+rsum1+root->data;
-        else
-            sum2 = lsum2;
-    }
-    else{
-        if(lsum1+rsum1+root->data > rsum2)
-            sum2 = lsum1+rsum1+root->data;
-        else
-            sum2 = rsum2;
-    }
-
-    return make_pair(sum1, sum2);
+    if(root->left != NULL)
+        return root->data + Lpath;
+    else 
+        return root->data + Rpath;
 }
 
 int maxPathSum(struct Node* root){
     if(root==NULL)
         return 0;
-    
-    int sum = pathSum(root).second;
+    int path = INT_MIN;
+    maxPathSumLtoL(root,path);
 
-    return sum;
-    
+    return path;
 }
