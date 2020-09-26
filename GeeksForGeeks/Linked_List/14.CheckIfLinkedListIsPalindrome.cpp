@@ -13,6 +13,8 @@
 // and returns true or false if linked list is palindrome or not respectively.
 
 #include <iostream>
+#include <stack>
+
 using namespace std;
 
 struct Node{
@@ -37,49 +39,35 @@ void Insert(struct Node** head, int newdata){
     }
 }
 
-struct Node* check(struct Node *head, struct Node *tail){
-    struct Node *temp;
-    if(tail->next != NULL){
-        temp = tail;
-        tail = tail->next;
-        struct Node *out = check(head, tail);
-        if(out == NULL)
-            return NULL;
-        else 
-            head = out;
-    }
-    else{
-        if(head->data != tail->data)
-            return NULL;
-        head = head->next;
-        return head;
-    }    
-    if(head->data != temp->data)
-        return NULL;
-    head = head->next;
-    return head;
-}
-
 bool isPalindrome(Node *head)
 {
-    struct Node *temp = head;
-    int count = 0;
+    stack<int> s;
+    int len=0,odd=0,count=0;
+    Node* temp = head;
     while(temp != NULL){
+        len++;
         temp = temp->next;
-        count++;
     }
-    if(count == 1)
+    temp = head;
+    if(len == 1 || (len == 2 && temp->data == temp->next->data))
         return true;
-    count = (count / 2) + 1;
-    struct Node *tail = head;
-    for(int i=1;i<count;i++)
-        tail = tail->next;
-
-    struct Node *out = check(head, tail);
-    if(out == NULL)
-        return false;
+    if(len % 2 == 1)
+        odd = 1;
+    len = len/2;
+    while(temp != NULL){
+        if(count < len)
+            s.push(temp->data);
+        if(count > len || (count == len && odd == 0)){
+            if(s.top() == temp->data)
+                s.pop();
+        }
+        count++;
+        temp = temp->next;
+    }
+    if(s.empty())
+        return true;
     else 
-        return true;
+        return false;
 }
 
 int main() {
