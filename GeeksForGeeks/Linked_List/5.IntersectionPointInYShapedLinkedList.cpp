@@ -15,6 +15,13 @@
 // linked list. The function should return data value of a node where two linked lists merge. 
 // If linked list do not merge at any point, then it should return -1.
 
+// Solution:
+// intersectPoint(head1,head2): calculate length of both linked list as len1 and len2 
+//     point 2 nodes temp1 and temp2 to head1 and head2 respectively
+//     calculate difference in lengths as dif and make the longer linked list pointer to increment dif times 
+//     while(temp1 != temp2) increment both temp1 and temp2 
+//     return temp1->data
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -45,19 +52,33 @@ void Insert(struct Node** head, int newdata, struct Node** tail){
 }
 
 int intersectPoint(struct Node* head1, struct Node* head2){
-    struct Node *temp1 = head1;
+    int len1=0,len2=0,dif;
+    Node* temp1 = head1;
     while(temp1 != NULL){
-        struct Node *temp2 = head2;
-        while(temp2 != NULL){
-            if(temp1->next == temp2->next){
-                temp1 = temp1->next;
-                return temp1->data;
-            }
-            temp2 = temp2->next;
-        }
+        len1++;
         temp1 = temp1->next;
     }
-    return -1;
+    Node* temp2 = head2;
+    while(temp2 != NULL){
+        len2++;
+        temp2 = temp2->next;
+    }  
+    temp1 = head1;
+    temp2 = head2;
+    dif = abs(len1 - len2);
+    if(len1 > len2){
+        for(int i=0;i<dif;i++)
+            temp1 = temp1->next;
+    }
+    else{
+        for(int i=0;i<dif;i++)
+            temp2 = temp2->next;
+    }
+    while(temp1 != temp2){
+        temp1 = temp1->next;
+        temp2 = temp2->next;
+    }
+    return temp1->data;
 }
 
 int main() {

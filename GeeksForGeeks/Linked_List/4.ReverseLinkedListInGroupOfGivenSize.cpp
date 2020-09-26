@@ -56,7 +56,6 @@ struct Node* reverseGroup(struct Node* head,int k){
     prev = NULL;
     start1 = cur;
     while(cur != NULL){
-
         for(int i=0;i<k;i++){
             if(cur == NULL)
                 break;
