@@ -12,6 +12,18 @@
 // The task is to complete the function pairWiseSwap() which takes the head node as the only argument 
 // and returns the modified head.
 
+// Solution:
+// pairWiseSwap(head): create 3 nodes namely first,second,temp and point them to head and initialize flag = 0
+//     while(second->next != NULL): make first as second->next and point second->next to first->next 
+//         point first->next to second 
+//         if(flag is 0) then make first as head 
+//         else point temp->next to first and make temp = second 
+//         make second = second->next and first = second 
+//         if(second == NULL) then break 
+//         make flag = 1
+//     return head
+
+
 #include <iostream>
 using namespace std;
 

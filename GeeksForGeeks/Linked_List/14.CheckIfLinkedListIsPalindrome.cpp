@@ -12,6 +12,15 @@
 // The task is to complete the function isPalindrome() which takes head as reference as the only parameter 
 // and returns true or false if linked list is palindrome or not respectively.
 
+// Solution:
+// isPalindrome(head): create a stack and initialize len,odd and count to 0
+//     create a temp node, point it to head and find length of linked list 
+//     again point temp to head 
+//     if len is 1 or if len is 2 and both nodes have same data then return true 
+//     if len is odd then make odd = 1 and make len = len/2
+//     push all the elements till len to stack and check whether all elements after len equals top of stack and pop them
+//     if stack is empty return true else return false 
+
 #include <iostream>
 #include <stack>
 
