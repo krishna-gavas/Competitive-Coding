@@ -21,6 +21,14 @@
 // The task is to complete the function detectloop() which contains reference to the head as only argument. 
 // This function should return 1 if linked list contains loop, else return 0.
 
+// Solution:
+// detectloop(head): if(head == NULL) return false 
+//     make 2 nodes namely p,q and point them to head
+//     while(p != NULL && q != NULL && q->next != NULL) 
+//         jump p by 1 step and q by 2 steps
+//         if(p == q) return true 
+//     return false
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -60,14 +68,16 @@ void Insert(struct Node** head, int newdata, struct Node** tail){
 }
 
 int detectloop(struct Node *head){
-    struct Node *temp = head;
-    while(temp != NULL){
-        if(temp->data < 0)
-            return 1;
-        temp->data = -(temp->data);
-        temp = temp->next;
+    if(head == NULL)
+        return false;
+    Node *p = head, *q = head;
+    while(p != NULL && q != NULL && q->next != NULL){
+        p = p->next;
+        q = q->next->next;
+        if(p == q)
+            return true;
     }
-    return 0;
+    return false;
 }
 
 int main() {

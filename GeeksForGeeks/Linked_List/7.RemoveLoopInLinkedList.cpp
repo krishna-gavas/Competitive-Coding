@@ -22,90 +22,134 @@
 // linked list. Simply remove the loop in the list (if present) without disconnecting any nodes from the list. 
 // The driver code will print 1 if your code is correct.
 
+// Solution:
+// detectloop(head): if(head == NULL) return false 
+//     make 3 nodes namely p,q and end and point p,q to head
+//     while(p != NULL && q != NULL && q->next != NULL): make end = p
+//         jump p by 1 step and q by 2 steps
+//         if(p == q) break  
+//     if(p != q) then return
+//     if(head != p) then end = endLoop(head,p) (here end node point to end of loop)
+//     make end->next = NULL
+
+// endLoop(head,p): make a node q and point it to head 
+//     while(p->next != q->next) increment both p and q 
+//     return p
 
 #include <iostream>
 #include <string>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int data;
-    struct Node* next;
-
-    Node(int x){
-        data = x;
+    Node* next;
+    
+    Node(int val)
+    {
+        data = val;
         next = NULL;
     }
 };
 
-void Print(struct Node* head){
-    struct Node* temp = head;
-    while(temp != NULL){
-        cout<<temp->data<<" ";
-        temp = temp->next;
-    }
-    cout<<endl;
+void loopHere(Node* head, Node* tail, int position)
+{
+    if(position==0) return;
+    
+    Node* walk = head;
+    for(int i=1; i<position; i++)
+        walk = walk->next;
+    tail->next = walk;
 }
 
-void Insert(struct Node** head, int newdata, struct Node** tail){
-    struct Node *newNode = new Node(newdata);    
-    if(*head == NULL){
-        *head = newNode;
-        *tail = newNode;
+bool isLoop(Node* head)
+{
+    if(!head) return false;
+    
+    Node* fast = head->next;
+    Node* slow = head;
+    
+    while( fast != slow)
+    {
+        if( !fast || !fast->next ) return false;
+        fast=fast->next->next;
+        slow=slow->next;
     }
-    else{
-        struct Node *temp = *head;
-        while(temp->next != NULL)
-            temp = temp->next;
-        temp->next = newNode;
-        *tail = newNode;
-    }
+    
+    return true;
 }
 
-void removeTheLoop(struct Node *head){
-    struct Node *temp1 = head, *temp2 = head,*temp3 = head;
-    int count = 0;
-    while(temp1 != NULL){
-        if(temp1->data < 0){
-            temp2->next = NULL;
-            break;
-        }
-        temp1->data = -(temp1->data);
-        temp1 = temp1->next;
-        temp2->next = temp1;
-        count++;
+int length(Node* head)
+{
+    int ret = 0;
+    while(head)
+    {
+        ret++;
+        head = head->next;
     }
-    head = temp3;
-    // struct Node *temp3 = *head;
-    // for(int i=0;i<count;i++){
-    //     cout<<temp3->data<<" ";
-    //     temp3 = temp3->next;
-    // }
+    return ret;
 }
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    struct Node *head = NULL, *tail = NULL;
-        int N,l,K,out,J;
+void removeLoop(Node* head);
 
-        cin>>N;
-        for(int i=0;i<N;i++){
-            cin>>l;
-            Insert(&head,l,&tail);
-        }
-        cin>>K;
-        J = K;
-        if(K > 0){
-            struct Node *temp = head;
-            while(--K)
-                temp = temp->next;
-            tail->next = temp;
-        }
-        // removeTheLoop(head);
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n, num;
+        cin>>n;
         
-        Print(head);
-	}
+        Node *head, *tail;
+        cin>> num;
+        head = tail = new Node(num);
+        
+        for(int i=0 ; i<n-1 ; i++)
+        {
+            cin>> num;
+            tail->next = new Node(num);
+            tail = tail->next;
+        }
+        
+        int pos;
+        cin>> pos;
+        loopHere(head,tail,pos);
+        
+        removeLoop(head);
+        
+        if( isLoop(head) || length(head)!=n )
+            cout<<"0\n";
+        else
+            cout<<"1\n";
+    }
 	return 0;
+}
 
+Node* endLoop(Node* head, Node* p){
+    Node *q = head;
+    while(p->next != q->next){
+        q = q->next;
+        p = p->next;
+    }
+    return p;
+}
+
+void removeLoop(Node* head)
+{
+    if(head == NULL)
+        return;
+    Node *p = head, *q = head, *end;
+    while(p != NULL && q != NULL && q->next != NULL){
+        end = p;
+        p = p->next;
+        q = q->next->next;
+        if(p == q)
+            break;
+    }
+    if(p != q)
+        return;
+    if(head != p)
+        end = endLoop(head,p);
+    end->next = NULL;
 }

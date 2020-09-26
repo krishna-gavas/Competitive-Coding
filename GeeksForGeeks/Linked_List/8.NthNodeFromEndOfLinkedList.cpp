@@ -14,6 +14,12 @@
 // The task is to complete the function getNthFromLast() which takes two arguments: reference to head and N 
 // and you need to return Nth from the end or -1 in case node doesn't exist..
 
+// Solution: 
+// getNthFromLast(head,n): count the number of nodes and store it in count variable 
+//     if(n > count) then return -1 
+//     make count = count - n 
+//     traverse the linked list till count and return the node->data 
+
 #include <iostream>
 #include <string>
 using namespace std;
