@@ -1,7 +1,22 @@
 // Max length chain
 
+// Question:
+// You are given N pairs of numbers. In every pair, the first number is always smaller than the second number. 
+// A pair (c, d) can follow another pair (a, b) if b < c. Chain of pairs can be formed in this fashion. You have 
+// to find the longest chain which can be formed from the given set of pairs. 
+
+// Input:
+// N = 5
+// P[] = {5  24 , 39 60 , 15 28 , 27 40 , 50 90}
+// Output: 3
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to Complete the function maxChainLen() which takes 
+// a structure p[] denoting the pairs and n as the number of pairs and returns the length of the longest chain formed.
+
+// Solution:
 // maxChainLen:
-//     Initialize count = 1 and sort P based on first value
+//     Initialize count = 1 and sort P in descending order based on first value
 //     make ele = P[0].first
 //     for(i=1 to N)
 //         if(P[i].second < ele) then ele = P[i].first and increment count

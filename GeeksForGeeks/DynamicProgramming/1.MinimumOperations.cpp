@@ -1,5 +1,12 @@
 // Minimum Operations
 
+// Question:
+// Given a number N. Find the number of operations required to reach N starting from 0. You have 2 operations 
+// available:
+// Double the number
+// Add one to the number
+
+// Solution:
 // Initialize count as 0
 // while(N > 0): 
 //     if(N is 1) then increment count and break from the loop

@@ -1,5 +1,22 @@
 // Minimize the sum of product(Not Submitted)
 
+// Question:
+// The task is to implement Huffman Encoding and Decoding.
+
+// Input:
+// First line consists of T test cases. Only line of every test case consists of String S.
+
+// Output:
+// Single line output, return the Decoded String.
+
+// Example:
+// Input:
+// 2
+// abc
+// geeksforgeeks
+// Output:
+// abc
+// geeksforgeeks
 
 #include <iostream>
 #include <map>
@@ -74,8 +91,19 @@ void calcFreq(string str, int n){
 // Complete the function below
 string decode_file(struct MinHeapNode* root, string s)
 {
-//add code here.
-    return "Krish";
+    string ans = "";
+    struct MinHeapNode* curr = root;
+    for(int i=0;i<s.size();i++){
+        if(s[i] == '0')
+            curr = curr->left;
+        else 
+            curr = curr->right;
+        if(curr->left == NULL && curr->right == NULL){
+            ans = ans + curr->data;
+            curr = root;
+        }
+    }
+    return ans;
 }
 
 int main() {

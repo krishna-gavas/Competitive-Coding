@@ -1,5 +1,13 @@
 // Maximum sum increasing subsequence
 
+// Question:
+// Given an array arr of N positive integers, the task is to find the maximum sum increasing subsequence of the 
+// given array.
+
+// Input: N = 5, arr[] = {1, 101, 2, 3, 100} 
+// Output: 106
+
+// Solution:
 // Create a DP[] array to store length of LIS and initialize it with A[i]
 // MSIS: initialize len = A[0]
 //     for(i=1 to N) initialize val = DP[i]

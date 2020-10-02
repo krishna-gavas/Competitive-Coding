@@ -1,5 +1,31 @@
 // Longest Common Substring
 
+// Question:
+// Given two strings X and Y. The task is to find the length of the longest common substring.
+
+// Input:
+// First line of the input contains number of test cases T. Each test case consist of three lines, first of which 
+// contains 2 space separated integers N and M denoting the size of string X and Y strings respectively. 
+// The next two lines contains the string X and Y.
+
+// Output:
+// For each test case print the length of longest  common substring of the two strings .
+
+// Example:
+// Input:
+// 2
+// 6 6
+// ABCDGH
+// ACDGHR
+// 3 2
+// ABC
+// AC
+
+// Output:
+// 4
+// 1
+
+// Solution:
 // LCSubstring:
 //     Create a DP table and initialize the length of longest substring(len) as 0
 //     for(i=0 to m+1)
