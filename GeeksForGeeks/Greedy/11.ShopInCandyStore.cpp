@@ -1,4 +1,4 @@
-// Shop in Candy Store(wrong)
+// Shop in Candy Store
 
 // Question:
 // In a candy store there are N different types of candies available  and the prices of all the N different types of 
@@ -38,24 +38,29 @@ int main() {
     int T;
     cin>>T;
     while(T--){
-        int N,K,minAmt=0,maxAmt=0;
+        int N,K,minAmt,maxAmt;
         cin>>N>>K;
         int A[N];
         for(int i=0;i<N;i++)
             cin>>A[i];
         sort(A,A+N);
-        for(int i=0;i<N;i++)
-            cout<<A[i]<<" ";
-        cout<<endl;
-        minAmt += A[0];
-        maxAmt += A[N-1];
-        for(int i=1;i<N-K;i++)
+        
+        minAmt = A[0];
+        maxAmt = A[N-1];
+        int temp1 = N-K;
+        int temp2 = K;
+        for(int i=1;i<temp1;i++){
             minAmt += A[i];
+            temp1 = temp1 - K;
+        }
 
-        for(int i=N-2;i> K; i--)
+        for(int i=N-2;i>= temp2; i--){
             maxAmt += A[i];
+            temp2 = temp2 + K;
+        }
 
         cout<<minAmt<<" "<<maxAmt<<"\n";
     }
     return 0;
 }
+

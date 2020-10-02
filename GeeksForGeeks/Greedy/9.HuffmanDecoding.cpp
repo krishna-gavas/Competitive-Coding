@@ -1,4 +1,4 @@
-// Minimize the sum of product(Not Submitted)
+// Minimize the sum of product
 
 // Question:
 // The task is to implement Huffman Encoding and Decoding.
