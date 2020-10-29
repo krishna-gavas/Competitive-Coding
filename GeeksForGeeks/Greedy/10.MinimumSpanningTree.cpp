@@ -33,7 +33,8 @@
 // 5
 
 // Solution:
-// spanningTree(V, E, graph): Create parent array to store parent of particular node, key array to store minimum weight and initialize it to infinity.
+// spanningTree(V, E, graph): Create parent array to store parent of particular node, key array to store minimum weight 
+//     and initialize it to infinity.
 //     also create an array mstSet to store visited nodes and initialize it to false, initialize cost=0.
 //     make key[0] = 0 and parent[0] = -1 since it is source vertex.
 //     for(count=0 to V-1): u = minKey(key, mstSet, V) and make mstSet[u] = true.
@@ -85,7 +86,6 @@ int spanningTree(int V, int E, vector<vector<int> > &graph) {
                 parent[v] = u;
                 key[v] = graph[u][v];
             }
-
         }
     }
     for(int i=1; i<V; i++)

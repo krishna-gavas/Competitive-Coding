@@ -1,16 +1,16 @@
-// Kadane's Algorithm to find maximum subarray sum
+// Kadane's Algorithm to find maximum subAay sum
 
 // Question:
-// Given an array arr of N integers. Find the contiguous sub-array with maximum sum.
+// Given an Aay A of N integers. Find the contiguous sub-Aay with maximum sum.
 
 // Input:
 // The first line of input contains an integer T denoting the number of test cases. 
 // The description of T test cases follows. The first line of each test case contains a single integer N denoting 
-// the size of array. The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of 
-// the array.
+// the size of Aay. The second line contains N space-separated integers A1, A2, ..., AN denoting the elements of 
+// the Aay.
 
 // Output:
-// Print the maximum sum of the contiguous sub-array in a separate line for each test case.
+// Print the maximum sum of the contiguous sub-Aay in a separate line for each test case.
 
 // Example:
 // Input
@@ -26,8 +26,8 @@
 // Solution:
 // Initialize localmax and globalmax to 0.
 // for(i=0 to N):
-// 	if(i==0 && arr[i]<0) then localmax = globalmax = arr[0].
-// 	if(arr[i] > arr[i] + localmax) then localmax = arr[i] else localmax = arr[i] + localmax.
+// 	if(i==0 && A[i]<0) then localmax = globalmax = A[0].
+// 	if(A[i] > A[i] + localmax) then localmax = A[i] else localmax = A[i] + localmax.
 // 	if(localmax > globalmax) then globalmax = localmax.
 // print globalmax
 
@@ -38,25 +38,20 @@ int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    long int N,lmax=0,gmax=0;
+	    int N;
 	    cin>>N;
-	    long int arr[N];
-	    for(long int i=0;i<N;i++)
-	        cin>>arr[i];
-
-		for(long int i=0;i<N;i++){
-			if(i==0 && arr[i]<0){
-				lmax = arr[0];
-				gmax = arr[0];
-			}
-			
-			if(arr[i] > (arr[i] + lmax))
-				lmax = arr[i];
+	    int A[N];
+	    for(int i=0;i<N;i++)
+	        cin>>A[i];
+	        
+        long int lmax = A[0],gmax = A[0];
+		for(int i=1;i<N;i++){
+			if(A[i] > (A[i] + lmax))
+				lmax = A[i];
 			else
-				lmax = arr[i] + lmax;
+				lmax = A[i] + lmax;
 
-			if(lmax > gmax)
-				gmax = lmax;
+			gmax = max(gmax, lmax);
 		}
 
 		cout<<gmax<<endl;

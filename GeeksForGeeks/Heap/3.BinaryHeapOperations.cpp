@@ -1,5 +1,36 @@
 // Binary Heap Operations
 
+// Question:
+// A binary heap is a Binary Tree with the following properties:
+// 1) It’s a complete tree (All levels are completely filled except possibly the last level and the last level has all 
+// keys as left as possible). This property of Binary Heap makes them suitable to be stored in an array.
+// 2) A Binary Heap is either Min Heap or Max Heap. In a Min Binary Heap, the key at the root must be minimum among all 
+// keys present in Binary Heap. The same property must be recursively true for all nodes in Binary Tree. Max Binary 
+// Heap is similar to MinHeap.
+// You are given an empty Binary Min Heap and some queries and your task is to implement the three methods insertKey,  
+// deleteKey,  and extractMin on the Binary Min Heap and call them as per the query given below:
+// 1) 1  x  (a query of this type means to insert an element in the min-heap with value x )
+// 2) 2  x  (a query of this type means to remove an element at position x from the min-heap)
+// 3) 3  (a query like this removes the min element from the min-heap and prints it ).
+
+// Input:
+// Q = 7
+// Queries:
+// insertKey(4)
+// insertKey(2)
+// extractMin()
+// insertKey(6)
+// deleteKey(0)
+// extractMin()
+// extractMin()
+// Output: 2 6 - 1
+
+// Your Task:
+// You are required to complete the 3 methods insertKey() which take one argument the value to be inserted, deleteKey() 
+// which takes one argument the position from where the element is to be deleted and extractMin() which returns the 
+// minimum element in the heap(-1 if the heap is empty)
+
+// Solution:
 // insertKey(k): 
 //     if(heap_size < capacity) then pos = heap_size and insert k into harr[pos], increment heapsize and ppos = parent(pos).
 //         while(harr[ppos] > harr[pos]): swap(harr[pos], harr[ppos]), pos = ppos and ppos = parent(pos).

@@ -43,7 +43,7 @@ long int Atoi(string str){
         }
     }
     if(flag == 1)
-    out = 0 - out;
+        out = 0 - out;
     return out;
 }
 

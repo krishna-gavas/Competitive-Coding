@@ -10,7 +10,6 @@
 //     if (r < n && arr[r] > arr[largest]) then largest = r.
 //     if(largest != i) then swap(arr[i], arr[largest]) and call heapify(arr, n, largest).
 
-
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -30,10 +29,8 @@ void heapify(int arr[], int n, int i)  {
 }
 
 void buildHeap(int arr[], int n)  { 
-    // Your Code Here
     for(int i=((n/2)-1);i>=0;i--)
        heapify(arr,n,i);
-    
 }
 
 void heapSort(int arr[], int n)  {
@@ -61,3 +58,4 @@ int main() {
         printArray(arr, n);
     }
 }
+

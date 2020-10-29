@@ -1,5 +1,25 @@
 // Number of paths(using DP)
 
+// Question:
+// The problem is to count all the possible paths from top left to bottom right of a MxN matrix with the constraints 
+// that from each cell you can either move to right or down.
+
+// Input:
+// The first line of input contains an integer T, denoting the number of test cases. The first line of each test case 
+// is M and N, M is number of rows and N is number of columns.
+
+// Output:
+// For each test case, print the number of paths.
+
+// Example:
+// Input
+// 2
+// 3 3
+// 2 8
+
+// Output
+// 6
+// 8
 
 #include <iostream>
 using namespace std;

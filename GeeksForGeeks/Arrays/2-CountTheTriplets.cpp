@@ -34,31 +34,48 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    long int N,count=0,flag=0;
-	    cin>>N;
-	    long int arr[N];
-		int* index = (int*)calloc(1000000, sizeof(int));
-	    for(long int i=0;i<N;i++){
-	        cin>>arr[i];
-			index[arr[i]] = 1;
-		}
-		for(long int i=0;i<N-1;i++){
-			for(long int j=i+1;j<N;j++){
-				if((index[arr[i]+arr[j]])==1){
-					count = count + 1;
-					flag = 1;
-				}
-			}
-		}
-		if(flag==1)
-			cout<<count<<endl;
-		else
-			cout<<-1<<endl;
-		free(index);
+class Solution{
+public:	
+	
+	int countTriplet(int A[], int n)
+	{
+	    int index[100000] = {0};
+	    int count = 0;
+	    for(int i=0;i<n;i++)
+	        index[A[i]] = 1;
+	        
+	    for(int i=0;i<n-1;i++){
+	        for(int j=i+1;j<n;j++){
+	            if(index[A[i] + A[j]] == 1){
+	                count++;
+	            }
+	        }
+	    }
+	    return count;
 	}
-	return 0;
+};
+
+int main() 
+{
+   	ios_base::sync_with_stdio(0);
+    cin.tie(NULL);
+    cout.tie(NULL);
+   
+   	int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+
+        int arr[n];
+        for(int i = 0; i < n; i++)
+        	cin >> arr[i];
+
+        Solution ob;
+        cout << ob.countTriplet(arr, n) << "\n";
+
+    }
+
+    return 0;
 }

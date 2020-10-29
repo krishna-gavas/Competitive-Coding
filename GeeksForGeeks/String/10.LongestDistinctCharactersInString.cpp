@@ -27,7 +27,7 @@
 // for(i=0 to len): 
 //     if(v1 contains str[i])
 //         if(curlen > max) then max = curlen.
-//         store index of str[i] into index , initialize coint=1, it1 and it2 to v1.begin.
+//         store index of str[i] into index , initialize count=1, it1 and it2 to v1.begin.
 //         increment it2 and count till it2 = it.
 //         increment it2 and if(it1 == it2) then v1.erase(it1) else v1.erase(it1,it2).
 //         push str[i] to v1, increment curlen and make curlen = curlen - count.

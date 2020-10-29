@@ -36,13 +36,6 @@
 // for(i=1 to n-2): minlr = min(left[i],right[i])
 //     if(minlr >= arr[i]) then water = water + (minlr - arr[i])
 
-
-
-for(int i=1;i<N-1;i++){
-            minlr = min(left[i],right[i]);
-            if(minlr >= arr[i])
-                water = water + (minlr - arr[i]);
-        }
 #include <iostream>
 #include <algorithm>
 using namespace std;

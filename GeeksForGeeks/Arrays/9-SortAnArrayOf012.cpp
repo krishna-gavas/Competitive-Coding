@@ -33,21 +33,6 @@
 // 	else if(arr[mid] == 2) then swap(arr[mid],arr[high]) and decrement high
 // 	else increment mid
 
-
-for(mid=0;mid<=high;){
-			if(arr[mid] == 0){
-				swap(arr[mid],arr[low]);
-				low++;
-				mid++;
-			}
-			else if(arr[mid] == 2){
-				swap(arr[mid],arr[high]);
-				high--;
-			}
-			else
-				mid++;
-		}
-
 #include <iostream>
 #include <algorithm>
 using namespace std;

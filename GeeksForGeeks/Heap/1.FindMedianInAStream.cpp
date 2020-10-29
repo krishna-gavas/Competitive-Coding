@@ -26,17 +26,18 @@
 // Solution:
 // Create 2 heaps namely maxHeap for storing elements less than median and minHeap for elements greater than median
 // for i=0 to N input X 
-// if(i == 0) then med1 = X, print X as median and push X to maxHeap 
-// if(i == 1) then 
-//     if(X > med1) make med2 = X and push X to minHeap else make med2 = med1, med1 = X push X to maxHeap and pop med2 from maxHeap and push to minHeap
-//     median = (med1 + med2)/2 and print median
-// if( i != 0 && i != 1): med1 = maxHeap.front()
-//     if(X > med1) then push X to minHeap else push X to maxHeap.
-//     if(difference of size of minHeap and maxHeap > 1) then 
-//         if(maxHeapSize > minHeapSize) then pop maxHeap.front() and push it to minHeap else pop minHeap.front() and push it to makeHeap
-//     if(difference of size of minHeap and maxHeap == 1) then
-//         if (maxHeap.size() > minHeap.size() ) then median = med1 else median = med2
-//     else median = (med1 + med2)/2;
+//     if(i == 0) then med1 = X, print X as median and push X to maxHeap 
+//     if(i == 1) then 
+//         if(X > med1) make med2 = X and push X to minHeap 
+//         else make med2 = med1, med1 = X push X to maxHeap and pop med2 from maxHeap and push to minHeap
+//         median = (med1 + med2)/2 and print median
+//     if( i != 0 && i != 1): med1 = maxHeap.front()
+//         if(X > med1) then push X to minHeap else push X to maxHeap.
+//         if(difference of size of minHeap and maxHeap > 1) then 
+//             if(maxHeapSize > minHeapSize) then pop maxHeap.front() and push it to minHeap else pop minHeap.front() and push it to maxHeap
+//         if(difference of size of minHeap and maxHeap == 1) then
+//             if (maxHeap.size() > minHeap.size() ) then median = med1 else median = med2
+//         else median = (med1 + med2)/2;
 // finally print median
 
 
