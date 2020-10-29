@@ -25,11 +25,11 @@
 // 5 10 12 18 20
 
 // Solution:
-// Create a varaiable called gap whose initial value is (X+Y+1)/2
-// while(gap >= 1):
-// 	for(i=0;i+gap<X+Y;i++): 
-// 		if(A[i+gap] < A[i]) swap(A[i],A[i+gap])
-// 	update gap = (gap+1)/2
+// merge(): initialize i as last index of a1 and j as first index of a2 
+//     while(i >= 0 && j < m):
+//         if(a1[i] > a2[j]) then swap(a1[i],a2[j])
+//         decrement i and increment j 
+//     sort array a1 and a2
 
 #include <iostream>
 using namespace std;
