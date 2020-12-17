@@ -30,52 +30,61 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-long long int counter = 0;
 
-void Merge(int A[],int l,int mid,int r){
-	int B[r+1];
-	int i=l,j=mid+1,k=l;
-	while(i <= mid && j <= r){
-		if(A[i] <=A[j])					// Element in right array is greater
-			B[k] = A[i++];
-		else{							// Element in right array is smaller
-			B[k] = A[j++];
-			counter = counter + (mid - i + 1);
-		}
-		k = k + 1;
-	}
-		while(i <= mid)
-			B[k++] = A[i++];
-		while(j <= r)
-			B[k++] = A[j++];
+long long int counter;
 
-		for(int j=l;j<=r;j++)
-			A[j] = B[j];
-	
+void Merge(long long A[], long long L,long long mid, long long R){
+    long long B[R+1];
+    long long i=L,j=mid+1,k=L;
+    while(i <= mid && j <= R){
+        if(A[i] <= A[j])
+            B[k++] = A[i++];
+        else{
+            B[k++] = A[j++];
+            counter += mid - i + 1;
+        }
+    }
+    while(i <= mid)
+        B[k++] = A[i++];
+    while(j <= R)
+        B[k++] = A[j++];
+        
+    for(long long i=L;i<=R;i++)
+        A[i] = B[i];
 }
 
-void MergeSort(int A[],int l,int r){
-	if(l < r){
-		int mid = (l+r)/2;
-		MergeSort(A,l,mid);
-		MergeSort(A,mid+1,r);
-		Merge(A,l,mid,r);
-	}
+void MergeSort(long long A[], long long L, long long R){
+    if(L < R){
+        long long mid = (L+R)/2;
+        MergeSort(A,L,mid);
+        MergeSort(A,mid+1,R);
+        Merge(A,L,mid,R);
+    }
+}
+
+long long int inversionCount(long long A[], long long N)
+{
+    counter = 0;
+    MergeSort(A,0,N-1);
+    return counter;
 }
 
 int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    counter = 0;
-	    int N;
-	    cin>>N;
-	    int arr[N];;
-		for(int i=0;i<N;i++)
-	        cin>>arr[i];
-
-		MergeSort(arr,0,N-1);
-		cout<<counter<<endl;		
-	}
-	return 0;
+    
+    long long T;
+    cin >> T;
+    
+    while(T--){
+        long long N;
+        cin >> N;
+        
+        long long A[N];
+        for(long long i = 0;i<N;i++){
+            cin >> A[i];
+        }
+        
+        cout << inversionCount(A,N) << endl;
+    }
+    
+    return 0;
 }

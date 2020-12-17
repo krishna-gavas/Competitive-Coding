@@ -31,21 +31,14 @@
 #include <algorithm>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    long int N,K;
-	    cin>>N>>K;
-	    long long int arr[N];
-		long int val=K,q,r,limit;
-		q = N/K;
+class Solution{
+public:
+    void reverseInGroups(vector<long long>& arr, int N, int K){
+        long int val=K,q,r,limit;
+        q = N/K;
 		r = N%K;
 		limit = q * K;
-
-	    for(long int i=0;i<N;i++)
-	        cin>>arr[i];
-
+		
 		for(long int i=0;i<limit;i=i+val){   
 			if(i%val == 0 && i != 0)
 				K = K + (2*val);
@@ -65,11 +58,31 @@ int main() {
 			for(int i=limit;i<=newlimit;i++)
 				swap(arr[i],arr[j--]);
 		}
+    }
+};
 
-		for(long int i=0;i<N;i++)
-	        cout<<arr[i]<<" ";
-		
-		cout<<endl;
-	}
-	return 0;
+int main() {
+    int t; 
+    cin >> t; 
+    while(t--){ 
+        int n;
+        cin >> n; 
+        vector<long long> arr; 
+        int k;
+        cin >> k; 
+
+        for(long long i = 0; i<n; i++)
+        {
+            long long x;
+            cin >> x; 
+            arr.push_back(x); 
+        }
+        Solution ob;
+        ob.reverseInGroups(arr, n, k);
+        
+        for(long long i = 0; i<n; i++){
+            cout << arr[i] << " "; 
+        }
+        cout << endl;
+    }
 }

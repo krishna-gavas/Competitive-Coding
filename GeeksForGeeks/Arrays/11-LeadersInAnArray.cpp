@@ -36,36 +36,51 @@
 #include <stack>
 using namespace std;
  
-int main ()  
-{  
-	long int T;
-	cin>>T; 
-	while(T--){
-	    long int N;
-	    cin>>N;
-	    int arr[N],flag=0;
-	    stack <int> S;  
+vector<int> leaders(int A[], int N){
+    int max = A[N-1];
+    stack<int> S;
+    vector<int> out;
+    
+    for(int i=N-1;i>=0;i--){
+        if(A[i] >= max){
+            S.push(A[i]);
+            max = A[i];
+        }
+    }
+    
+    while(!S.empty()){
+        out.push_back(S.top());
+        S.pop();
+    }
+    return out;
+}
 
-	    for(int i=0;i<N;i++)
-	        cin>>arr[i];
 
-		int max = arr[N-1];
+int main()
+{
+   long long t;
+   cin >> t;//testcases
+   while (t--)
+   {
+       long long n;
+       cin >> n;//total size of array
+        
+        int a[n];
+        
+        //inserting elements in the array
+        for(long long i =0;i<n;i++){
+            cin >> a[i];
+        }
+        
+        //calling leaders() function
+        vector<int> v = leaders(a, n);
+        
+        //printing elements of the vector
+        for(auto it = v.begin();it!=v.end();it++){
+            cout << *it << " ";
+        }
+        
+        cout << endl;
 
-		for(int i=N-1;i>=0;i--){
-			if(arr[i] >= max){
-				S.push(arr[i]);
-				max = arr[i];
-			}
-		}
-
-		while(flag == 0)
-			if(S.empty())
-				flag = 1;
-			else{
-				cout<<S.top()<<" ";
-				S.pop();
-			}
-		cout<<endl;
-	}    
-    return 0;  
-} 
+   }
+}

@@ -37,35 +37,46 @@
 #include <algorithm>
 using namespace std;
 
+void sort012(int A[], int N)
+{
+    int low=0,mid=0,high=N-1;
+    for(mid=0; mid <= high; ){
+        if(A[mid] == 0){
+            swap(A[mid], A[low]);
+            low++;
+            mid++;
+        }
+        else if(A[mid] == 2){
+            swap(A[mid], A[high]);
+            high--;
+        }
+        else
+            mid++;
+    }
+}
+
 int main() {
-	long int T;
-	cin>>T;
-	while(T--){
-	    long int N;
-	    cin>>N;
-	    int arr[N],low=0,mid=0,high=N-1;
 
-	    for(long int i=0;i<N;i++)
-	        cin>>arr[i];
+    int t;
+    cin >> t;
 
-		for(mid=0;mid<=high;){
-			if(arr[mid] == 0){
-				swap(arr[mid],arr[low]);
-				low++;
-				mid++;
-			}
-			else if(arr[mid] == 2){
-				swap(arr[mid],arr[high]);
-				high--;
-			}
-			else
-				mid++;
-		}
+    while(t--){
+        int n;
+        cin >>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin >> a[i];
+        }
 
-		for(long int i=0;i<N;i++)
-	        cout<<arr[i]<<" ";
-		cout<<endl;
-		
-	}
-	return 0;
+        sort012(a, n);
+
+        for(int i=0;i<n;i++){
+            cout << a[i]  << " ";
+        }
+
+        cout << endl;
+        
+        
+    }
+    return 0;
 }

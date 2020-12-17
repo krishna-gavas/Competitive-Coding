@@ -39,25 +39,26 @@ int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    long int N,S,flag=0,head=0,sum=0;		// initialize head and sum
+	    long int N,S;
+	    long int flag=0, start=0, sum=0;
 	    cin>>N>>S;
-	    long int arr[N];
+	    long int A[N];
 	    for(int i=0;i<N;i++)
-	        cin>>arr[i];
-	        
+	        cin>>A[i];
+	    
 	    for(int i=0;i<N;i++){
-	        sum = sum + arr[i];          
-	        while(sum > S){						// if subarray sum is greater shift head 
-				sum = sum - arr[head];
-				head++;
-			}
-			if(sum == S){
-				cout<<head+1<<" "<<i+1<<endl;
-				flag = 1;
-				break;
-			}
+	        sum = sum + A[i];
+	        while(sum > S){
+	            sum = sum - A[start];
+	            start++;
+	        }
+	        if(sum == S){
+	            cout<<start+1<<" "<<i+1<<endl;
+	            flag = 1;
+	            break;
+	        }
 	    }
-	    if(flag==0)
+	    if(flag == 0)
 	        cout<<-1<<endl;
 	}
 	return 0;

@@ -42,38 +42,43 @@
 #include <iterator>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    int N;
-	    cin>>N;
-	    int arr[N],dep[N],count=0,max=0;
-		multimap <int, char> mp;
-		multimap <int, char> :: iterator itr;
-
-	    for(long int i=0;i<N;i++){
-	        cin>>arr[i];
-			mp.insert(pair <int, char> (arr[i], 'a'));
-		}
-		
-
-		for(long int i=0;i<N;i++){
-	        cin>>dep[i];
-			mp.insert(pair <int, char> (dep[i], 'd'));
-		}
-
-		for (itr = mp.begin(); itr != mp.end(); ++itr) 
-		{ 
-			if(count > max)
-				max = count;
-			if(itr->second == 'a')
-				count++;
-			else if(itr->second == 'd')
-				count--;
-		}
-		cout<<max<<endl;
-
+int findPlatform(int arr[], int dep[], int n)
+{
+	int count=1,max=1,i=1,j=0;
+	sort(arr,arr+n);
+	sort(dep,dep+n);
+	
+	while(i < n && j < n){
+	    if(arr[i] <= dep[j]){
+	        i++;
+	        count++;
+	        if(count > max)
+	            max = count;
+	    }
+	    else{
+	        j++;
+	        count--;
+	    }
 	}
-	return 0;
+	return max;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--) 
+    {
+        int n;
+        cin>>n;
+        int arr[n];
+        int dep[n];
+           for(int i=0;i<n;i++)
+        cin>>arr[i];
+        for(int j=0;j<n;j++){
+            cin>>dep[j];
+        }
+    cout <<findPlatform(arr, dep, n)<<endl;
+    } 
+   return 0;
 }

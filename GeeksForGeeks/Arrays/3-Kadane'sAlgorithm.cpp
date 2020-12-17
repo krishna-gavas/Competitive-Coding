@@ -43,19 +43,15 @@ int main() {
 	    int A[N];
 	    for(int i=0;i<N;i++)
 	        cin>>A[i];
-	        
-        long int lmax = A[0],gmax = A[0];
-		for(int i=1;i<N;i++){
-			if(A[i] > (A[i] + lmax))
-				lmax = A[i];
-			else
-				lmax = A[i] + lmax;
-
-			gmax = max(gmax, lmax);
-		}
-
-		cout<<gmax<<endl;
-		
+	    long int lmax = A[0], gmax = A[0];
+	    for(int i=1;i<N;i++){
+	        if(A[i] > (A[i] + lmax))
+	            lmax = A[i];
+	        else 
+	            lmax = lmax + A[i];
+	        gmax = max(gmax, lmax);
+	    }
+	    cout<<gmax<<endl;
 	}
 	return 0;
 }
