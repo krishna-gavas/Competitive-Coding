@@ -28,13 +28,13 @@
 // Create 2 arrays namely left and right to store the left and right maximum for every element
 // initialize water,lmax and rmax to 0 
 // for(i=1 to n-2): (to calculate left maximum)
-//     if(arr[i-1] > lmax) then lmax = arr[i-1]
+//     if(A[i-1] > lmax) then lmax = A[i-1]
 //     left[i] = lmax
 // for(i=n-2 to 1): (to calculate right maximum)
-//     if(arr[i+1] > rmax) then rmax = arr[i+1]
+//     if(A[i+1] > rmax) then rmax = A[i+1]
 //     right[i] = rmax
 // for(i=1 to n-2): minlr = min(left[i],right[i])
-//     if(minlr >= arr[i]) then water = water + (minlr - arr[i])
+//     if(minlr >= A[i]) then water = water + (minlr - A[i])
 
 #include <iostream>
 #include <algorithm>
@@ -46,29 +46,29 @@ int main() {
 	while(T--){
 	    int N;
 	    cin>>N;
-	    int arr[N],left[N],right[N];
+	    int A[N],left[N],right[N];
         int water=0,lmax=0,rmax=0;
 
 	    for(int i=0;i<N;i++)
-	        cin>>arr[i];
+	        cin>>A[i];
 
         for(int i=1;i<N-1;i++){
-            if(arr[i-1] > lmax)
-                lmax = arr[i-1];
+            if(A[i-1] > lmax)
+                lmax = A[i-1];
             left[i] = lmax;
         }
         int lim = N-2;
         for(int i=lim;i>0;i--){
-            if(arr[i+1] > rmax)
-                rmax = arr[i+1];
+            if(A[i+1] > rmax)
+                rmax = A[i+1];
             right[i] = rmax;
         }
 
         int minlr;
         for(int i=1;i<N-1;i++){
             minlr = min(left[i],right[i]);
-            if(minlr >= arr[i])
-                water = water + (minlr - arr[i]);
+            if(minlr >= A[i])
+                water = water + (minlr - A[i]);
         }
         
 		cout<<water<<endl;
