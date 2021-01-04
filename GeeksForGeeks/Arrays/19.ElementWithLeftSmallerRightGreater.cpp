@@ -42,17 +42,18 @@ int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    int N,ele=-1;
+	    int N;
 	    cin>>N;
 	    int A[N],min[N],max[N];
-        int big = 0;
+        int ele=-1, big=A[0], small = A[N-1];
+        for(int i=0;i<N;i++)
+            cin>>A[i];
+
 	    for(int i=0;i<N;i++){
-	        cin>>A[i];
             if(A[i] > big)
                 big = A[i];
             max[i] = big;
         }
-        int small = A[N-1];
         for(int i=N-1;i>=0;i--){
             if(A[i] < small)
                 small = A[i];

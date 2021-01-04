@@ -28,51 +28,73 @@
 // (1 4) (5 9)
 
 // Solution:
-// Initialize start,end and flag to 0 and initialize cur = arr[0]
+// Initialize buy,sell and flag to 0 and initialize cur = arr[0]
 // for(i=1 to N):
 //     cur = arr[i]
-//     if(arr[i] > cur) then increment end and make flag = 1
-//     else if(start == end) then make start = end = i
-//     else then print (start,end) and make start = end = i
+//     if(arr[i] > cur) then increment sell and make flag = 1
+//     else if(buy == sell) then make buy = sell = i
+//     else then print (buy,sell) and make buy = sell = i
 
 #include <iostream>
 #include <algorithm>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    int N,start=0,end=0,cur,flag=0;
-	    cin>>N;
-	    int arr[N];
-
-	    for(int i=0;i<N;i++)
-	        cin>>arr[i];
-        cur = arr[0];
+class Solution{
+public:
+    vector<vector<int> > stockBuySell(vector<int> A, int N){
+        int buy=0,sell=0,flag=0;
+        vector<vector<int> > ans;
         for(int i=1;i<N;i++){
-            cur = arr[i];
-            if(arr[i] > cur){
-                end++;
+            if(A[i] >= A[i-1] && A[i] != A[buy]){
+                sell++;
                 flag = 1;
             }
-            else if(start == end){
-                start = i;
-                end = i;
+            else if(buy == sell){
+                buy = i;
+                sell = i;
             }
             else{
-                cout<<"("<<start<<" "<<end<<") ";
-                start = i;
-                end = i;
+                vector<int> vec;
+                vec.push_back(buy);
+                vec.push_back(sell);
+                ans.push_back(vec);
+
+                buy = i;
+                sell = i;
             }
         }
-
         if(flag == 0)
-            cout<<"No Profit";
-        else if(start != N-1 && end == N-1)
-            cout<<"("<<start<<" "<<end<<") ";
-        cout<<endl;
+            return ans;
+        else if(buy != N-1 && sell == N-1){
+            vector<int> temp;
+            temp.push_back(buy);
+            temp.push_back(sell);
+            ans.push_back(temp);
+        }
+        return ans;
+    }
+};
 
-	}
-	return 0;
+int main()
+{   
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> A(n);
+        for (int i=0; i<n; ++i){
+            cin>>A[i];
+        }
+        Solution ob;
+        vector<vector<int> > ans = ob.stockBuySell(A, n);
+        if(ans.size()==0)
+            cout<<"No Profit";
+        else{
+            for (int i=0; i<ans.size(); ++i){
+                cout<<"("<<ans[i][0]<<" "<<ans[i][1]<<") ";
+            }
+        }cout<<endl;
+    }
+    return 0;
 }
