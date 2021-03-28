@@ -24,19 +24,39 @@
 #include <string>
 using namespace std;
 
+int strstr(string ,string);
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string a;
+        string b;
+        
+        cin>>a;
+        cin>>b;
+        
+        cout<<strstr(a,b)<<endl;
+    }
+}
+// } Driver Code Ends
+
+
+/* The function should return position where the target string 
+   matches the string str
+Your are required to complete this method */
 int strstr(string s, string x)
 {
-     int len = s.length();
-     int len1 = x.length();
+     int lenS = s.length();
+     int lenX = x.length();
      int flag;
-     for(int i=0;i<len;i++){
+     for(int i=0;i<lenS;i++){
          if(s[i] == x[0]){
              flag = 0;
-             for(int j=0;j<len1;j++){
-                 if(s[i+j] == x[j]){
-
-                 }
-                 else{
+             for(int j=0;j<lenX;j++){
+                 if(s[i+j] != x[j]){
                      flag = 1;
                      break;
                  }
@@ -47,17 +67,4 @@ int strstr(string s, string x)
          }
      }
      return -1;
-}
-
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    string s,x;
-        cin>>s>>x;
-        int out = strstr(s,x);
-        
-        cout<<out<<endl;
-	}
-	return 0;
 }

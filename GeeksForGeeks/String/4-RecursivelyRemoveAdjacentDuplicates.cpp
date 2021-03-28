@@ -31,14 +31,14 @@
 #include <string>
 using namespace std;
 
-string RemoveAdjacent(string str){
-        string str2;
-        int len = str.length(),l=0,r,flag=0,last=0;
+string RemoveAdjacent(string S){
+        string S2;
+        int len = S.length(),l=0,r,flag,last=0;
 
         for(int i=0;i<len;){
             int j=i+1;
             flag = 0;
-            while((str[i] == str[j]) && (j<len)){
+            while((S[i] == S[j]) && (j<len)){
                 j++;
                 flag = 1;
                 last = 1;
@@ -50,27 +50,27 @@ string RemoveAdjacent(string str){
             }
             else{
                 r = i;
-                str2.append(str.substr(l,(r-l+1)));
+                S2.append(S.substr(l,(r-l+1)));
                 l = j;
                 i++;
             }
         }
         if(last == 0)
-            return str2;
+            return S2;
         else 
-            return RemoveAdjacent(str2);
+            return RemoveAdjacent(S2);
 }
 
 int main() {
 	int T;
 	cin>>T;
 	while(T--){
-	    string str1,str2; 
-        cin>>str1;
+	    string S,S2; 
+        cin>>S;
 
-        str2 = RemoveAdjacent(str1);
+        S2 = RemoveAdjacent(S);
  
-        cout<<str2<<endl;
+        cout<<S2<<endl;
 	}
 	return 0;
 }

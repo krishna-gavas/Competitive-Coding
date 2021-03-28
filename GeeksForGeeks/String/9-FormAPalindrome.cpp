@@ -33,34 +33,41 @@
 
 using namespace std;
 
-int LCS(string X, string Y, int m, int n){
-	int DP[m+1][n+1];
-	for(int i=0;i<=m;i++){
+int countMin(string str);
+
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        string str;
+        cin >> str;
+        cout << countMin(str) << endl;
+    }
+return 0;
+}
+
+// } Driver Code Ends
+
+int LCS(string S1, string S2, int n){
+	int DP[n+1][n+1];
+	for(int i=0;i<=n;i++){
 		for(int j=0;j<=n;j++){
 			if(i==0 || j==0)
 				DP[i][j] = 0;
-			else if(X[i-1] == Y[j-1])
+			else if(S1[i-1] == S2[j-1])
 				DP[i][j] = 1 + DP[i-1][j-1];
 			else 
 				DP[i][j] = max(DP[i-1][j],DP[i][j-1]);
 		}
 	}
-	return DP[m][n];
+	return DP[n][n];
 }
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    string str1,str2;
-        cin>>str1;
-        int n,len,insertions;
-		n = str1.length();
-        str2 = str1;
-		reverse(str2.begin(), str2.end());
-        len = LCS(str1,str2,n,n);
-		insertions = n - len;
-		cout<<insertions<<"\n";
-	}
-	return 0;
+int countMin(string S1){
+    string S2 = S1;
+    int n = S1.length();
+	reverse(S2.begin(), S2.end());
+    int len = LCS(S1,S2,n);
+	int insertions = n - len;
+	return insertions;
 }

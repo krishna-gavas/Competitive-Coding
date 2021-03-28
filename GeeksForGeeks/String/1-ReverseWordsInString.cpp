@@ -28,26 +28,33 @@
 #include <string>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    string str1,str2;
-        cin>>str1;
-        int len = str1.length();
-        int r,len1 = len-1;
+string reverseWords(string s);
+int main() 
+{
+    int t;
+    cin >> t;
+    while (t--) 
+    {
+        string s;
+        cin >> s;
+        cout<<reverseWords(s)<<endl;
+    }
+}// } Driver Code Ends
 
-		for(int i=len;i>=0;i--){
-            if(str1[i] == '.'){
-                r = len1 - i;
-                len1 = i - 1;
-                str2.append(str1.substr(i+1,r));
-                str2.append(".");
-            }
+
+string reverseWords(string S1) 
+{ 
+    string S2;
+    int r;
+    int len = S1.length();
+    for(int i = len-1;i>=0;i--){
+        if(S1[i] == '.'){
+            r = len - i;
+            len = i -1;
+            S2.append(S1.substr(i+1,r));
+            S2.append(".");
         }
-        str2.append(str1.substr(0,len1+1));
-        cout<<str2<<endl;
-           
-	}
-	return 0;
-}
+    }
+    S2.append(S1.substr(0,len+1));
+    return S2;
+} 

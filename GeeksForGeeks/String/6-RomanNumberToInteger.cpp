@@ -35,9 +35,22 @@
 #include <map>
 using namespace std;
 
+int romanToDecimal(string &);
+
 int main() {
-	int T;
-	cin>>T;
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        cout << romanToDecimal(s) << endl;
+    }
+}// } Driver Code Ends
+
+// User fuunction teemplate for C++
+// Returns decimal value of roman numaral
+int romanToDecimal(string &S) {
+    
     map<char, int> roman;
     roman.insert(pair<char, int>('I', 1));
     roman.insert(pair<char, int>('V', 5));
@@ -46,29 +59,19 @@ int main() {
     roman.insert(pair<char, int>('C', 100));
     roman.insert(pair<char, int>('D', 500));
     roman.insert(pair<char, int>('M', 1000));
-
-	while(T--){
-	    string str1;
-        cin>>str1;
-        int len = str1.length(),num,sum=0;
-
-        for(int i=0;i<len;){
-            if(i == (len-1)){
-                num = roman[str1[i]];
-                i++;
-            }
-            else if(roman[str1[i]] < roman[str1[i+1]]){
-                num = roman[str1[i+1]] - roman[str1[i]];
-                i = i+2;
-            }
-            else{
-                num = roman[str1[i]];
-                i++;
-            }
-            sum = sum + num;
+    
+    int len = S.length(),num,sum=0;
+    
+    for(int i=0;i<len;){
+        if(i == (len-1) || roman[S[i]] >= roman[S[i+1]]){
+            num = roman[S[i]];
+            i++;
         }
-
-        cout<<sum<<endl;
-	}
-	return 0;
+        else{
+            num = roman[S[i+1]] - roman[S[i]];
+            i = i+2;
+        }
+        sum = sum + num;
+    }
+    return sum;
 }

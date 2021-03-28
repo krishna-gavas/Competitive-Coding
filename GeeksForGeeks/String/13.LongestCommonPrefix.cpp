@@ -36,15 +36,14 @@
 #include <string>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    int N,count=0,flag=0,min=1000;
-        cin>>N;
-        string arr[N],str;
+class Solution{
+    public:
+    
+    string longestCommonPrefix (string arr[], int N)
+    {
+        int count=0,flag=0,min=1000;
+        string str;
         for(int i=0;i<N;i++){
-            cin>>arr[i];
             int len = arr[i].length();
             if(len < min){
                 min = len;
@@ -54,10 +53,7 @@ int main() {
         
         for(int i=0;i<min;i++){
             for(int j=0;j<N;j++){
-                if(arr[j][i] == str[i]){
-                    // Nothing here
-                }
-                else{
+                if(arr[j][i] != str[i]){
                     flag = 1;
                     break;
                 }               
@@ -67,10 +63,24 @@ int main() {
             count++;
         }
         if(count==0)
-            cout<<-1<<endl;
+            return "-1";
         else
-            cout<<str.substr(0,count)<<endl;
-           
-	}
-	return 0;
+            return str.substr(0,count);
+    }
+};
+
+// { Driver Code Starts.
+int main()
+{
+    int t; cin >> t;
+    while (t--)
+    {
+        int n; cin >> n;
+        string arr[n];
+        for (int i = 0; i < n; ++i)
+            cin >> arr[i];
+        
+        Solution ob;
+        cout << ob.longestCommonPrefix (arr, n) << endl;
+    }
 }

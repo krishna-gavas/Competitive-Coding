@@ -22,40 +22,45 @@
 #include <string>
 using namespace std;
 
-long int Atoi(string str){
-    int flag=0,len = str.length();
-    long int out;
-    for(int i=0;i<len;i++){
-        if(i==0 && str[i] == 45){
-            flag = 1;
-            continue;
-        }
-        if(str[i] >= '0' && str[i] <= '9'){
-            if(i==0)
-                out = str[i] - 48;
+class Solution{
+    public:
+    int atoi(string S)
+    {
+        int sign=0,len = S.length();
+        long int out;
+        for(int i=0;i<len;i++){
+            if(i==0 && S[i] == 45){
+                sign = 1;
+                continue;
+            }
+            if(S[i] >= '0' && S[i] <= '9'){
+                if(i==0)
+                    out = S[i] - 48;
+                else{
+                    out = out*10;
+                    out = out + (S[i] - 48);
+                }
+            }
             else{
-                out = out*10;
-                out = out + (str[i] - 48);
+                return -1;
             }
         }
-        else{
-            return -1;
-        }
+        if(sign == 1)
+            out = 0 - out;
+        return out;
     }
-    if(flag == 1)
-        out = 0 - out;
-    return out;
-}
+};
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    string str;
-        cin>>str;
-        long int out = Atoi(str);
-        
-        cout<<out<<endl;
+// { Driver Code Starts.
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string s;
+		cin>>s;
+		Solution ob;
+		cout<<ob.atoi(s)<<endl;
 	}
-	return 0;
-}
+} 

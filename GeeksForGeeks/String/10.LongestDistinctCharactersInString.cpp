@@ -42,43 +42,51 @@
 #include <algorithm>
 using namespace std;
 
-int main() {
-	int T;
-	cin>>T;
-	while(T--){
-	    string str;
-        cin>>str;
-        int len = str.length();
-        int max=0,curlen=0,start=0;
-        vector<char> v1,v2;
-        vector<char>::iterator it,it1,it2;
+int longestSubstrDitinctChars (string S);
+int main()
+{
+    int t; cin >> t;
+    while (t--)
+    {
+        string S; cin >> S;
 
+        cout << longestSubstrDitinctChars (S) << endl;
+    }
+}
+
+// Contributed By: Pranay Bansal
+// } Driver Code Ends
+int longestSubstrDitinctChars (string S)
+{
+        int len = S.length();
+        int max = 0, curlen = 0;
+        vector<char> v;
+        vector<char> :: iterator it,it1;
+        
         for(int i=0;i<len;i++){
-            it = find(v1.begin(), v1.end(), str[i]);
-            if(it != v1.end()){
+            it = find(v.begin(), v.end(), S[i]);
+            if(it != v.end()){
                 int count = 1;
-                it1 = v1.begin();
+                it1 = v.begin();
                 
                 while(it1 != it){
                     it1++;
                     count++;
                 }
-                if(it == v1.begin())
-                    v1.erase(it);
+                if(it == v.begin())
+                    v.erase(it);
                 else
-                    v1.erase(v1.begin(), ++it);
-                v1.push_back(str[i]);
+                    v.erase(v.begin(), ++it);
+                v.push_back(S[i]);
                 curlen++;
                 curlen = curlen - count;
             }
             else{
-                v1.push_back(str[i]);
+                v.push_back(S[i]);
                 curlen++;
             }
             if(curlen > max)
                 max = curlen;
-        } 
-        cout<<max<<endl;
-	}
-	return 0;
+        }
+        return max;
 }
